@@ -6,6 +6,7 @@ import mk.dians.finki.backend.service.PlaceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlaceServiceImpl implements PlaceService {
@@ -21,6 +22,10 @@ public class PlaceServiceImpl implements PlaceService {
         return placeRepository.findAll();
     }
 
+    @Override
+    public Optional<Place> getPlaceById(Long id) {
+        return placeRepository.findById(id);
+    }
 
 
     @Override
