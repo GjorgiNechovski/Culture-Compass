@@ -18,10 +18,10 @@
   
   <ng-template #generalInfo>
     <div *ngIf="place">
-      <p>Opens: {{ place.opening_hours }}</p>
-      <p>Phone: {{ place.phone ?? 'N/A' }}</p>
+      <p>Opens: {{ place.openingHours }}</p>
+      <p>Phone: {{ place.phoneNumber ?? 'N/A' }}</p>
       <p>Website: {{ place.website ?? 'N/A' }}</p>
-      <p>Requires ticket? {{ place.fee }}</p>
+      <p>Requires ticket? {{ place.hasEntranceFee }}</p>
     </div>
   </ng-template>
   
