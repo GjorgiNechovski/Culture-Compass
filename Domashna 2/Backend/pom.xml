@@ -55,10 +55,13 @@
 
 	<build>
 		<plugins>
+			<!-- Other plugins -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.2.0</version>
 				<configuration>
+					<mainClass>mk.dians.finki.backend.BackendApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -66,8 +69,17 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+			<!-- Other plugins -->
 		</plugins>
 	</build>
+
 
 </project>
