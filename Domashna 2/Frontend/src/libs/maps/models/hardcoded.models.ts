@@ -1,7 +1,7 @@
-import { Location } from './map.models';
+import { Place } from './map.models';
 
-const locations: Location[] = [
-  new Location(
+const locations: Place[] = [
+  new Place(
     1,
     'Куршумли-ан',
     'Cкoпje',
@@ -13,7 +13,7 @@ const locations: Location[] = [
     null,
     null
   ),
-  new Location(
+  new Place(
     2,
     'Музеј на Македонија',
     'Cкoпje',
@@ -25,7 +25,7 @@ const locations: Location[] = [
     null,
     null
   ),
-  new Location(
+  new Place(
     3,
     'Музеј на современата уметност',
     'Cкoпje',
@@ -37,7 +37,7 @@ const locations: Location[] = [
     '+389 2 3117734',
     null
   ),
-  new Location(
+  new Place(
     4,
     'Магаза',
     'Битола',

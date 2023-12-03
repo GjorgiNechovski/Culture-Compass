@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '../../models/map.models';
+import { Place } from '../../models/map.models';
 import { MapService } from '../../services/map.service';
 import { LocationDetailsComponent } from '../location-details/location-details.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import locations from '../../models/hardcoded.models';
 
 @Component({
   selector: 'app-map',
@@ -10,7 +11,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./map.component.css'],
 })
 export default class MapComponent implements OnInit {
-  locations: Location[] = [];
+  locations: Place[] = [];
+  mapLoaded: boolean = false;
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 41.6086, lng: 21.7453 },
@@ -25,10 +27,14 @@ export default class MapComponent implements OnInit {
   constructor(private mapService: MapService, public modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.locations = this.mapService.getLocations();
+    this.mapService.getLocations().subscribe((data: Place[]) => {
+      this.locations = data;
+      console.log(this.locations);
+      this.mapLoaded = true;
+    });
   }
 
-  openLocationDetails(location: Location) {
+  openLocationDetails(location: Place) {
     const modalRef = this.modalService.open(LocationDetailsComponent, {
       size: 'lg',
       windowClass: 'modal-class',

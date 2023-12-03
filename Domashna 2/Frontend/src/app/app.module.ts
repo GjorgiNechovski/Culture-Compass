@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MapsModule } from 'src/libs/maps/maps.module';
@@ -16,6 +17,7 @@ import { RegisterComponent } from 'src/libs/maps/components/auth/register.compon
     NgbModule,
     MapsModule,
     RoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([]),
   ],
   providers: [],

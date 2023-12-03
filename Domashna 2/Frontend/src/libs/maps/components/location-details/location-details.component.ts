@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Location } from '../../models/map.models';
+import { Place } from '../../models/map.models';
 
 @Component({
   selector: 'app-location-details',
@@ -7,7 +7,7 @@ import { Location } from '../../models/map.models';
   styleUrls: ['./location-details.component.css'],
 })
 export class LocationDetailsComponent {
-  @Input() place!: Location;
+  @Input() place!: Place;
   @Output() cancelModal = new EventEmitter<void>();
 
   selectedView: string = 'general';
