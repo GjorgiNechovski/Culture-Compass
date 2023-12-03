@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/core": "^17.0.5",
+    "@angular/router": "^17.0.5",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0"
+  }
+}
