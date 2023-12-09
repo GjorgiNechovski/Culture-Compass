@@ -9,5 +9,19 @@ export const MapReducer = createReducer(
       ...state,
       places: places,
     };
-  })
+  }),
+  on(MapActions.changeFromRoute, (state, { origin }) => ({
+    ...state,
+    route: {
+      ...state.route,
+      origin: { ...origin },
+    },
+  })),
+  on(MapActions.changeToRoute, (state, { destination }) => ({
+    ...state,
+    route: {
+      ...state.route,
+      destination: { ...destination },
+    },
+  }))
 );

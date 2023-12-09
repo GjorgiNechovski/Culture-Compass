@@ -7,3 +7,14 @@ export const placesState = createSelector(
   state,
   (state1: IMapState) => state1.places
 );
+
+export const routeState = createSelector(state, (state1: IMapState) => {
+  const route = state1.route;
+  if (route) {
+    return {
+      ...route,
+      travelMode: google.maps.TravelMode.DRIVING,
+    };
+  }
+  return route;
+});

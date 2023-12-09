@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Place } from '../../models/map.models';
-import { MapService } from '../../services/map.service';
 import { LocationDetailsComponent } from '../location-details/location-details.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import locations from '../../models/hardcoded.models';
 import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
+import { Observable, debounceTime, distinctUntilChanged, map, of } from 'rxjs';
 import { PlacesFacade } from '../../state/map-state.facade';
+import { MapDirectionsService } from '@angular/google-maps';
 
 @Component({
   selector: 'app-map',
@@ -23,6 +22,12 @@ export default class MapComponent implements OnInit {
     disableDefaultUI: true,
   };
 
+  request: google.maps.DirectionsRequest | null = null;
+
+  directionsResults$: Observable<
+    google.maps.DirectionsResult | null | undefined
+  > = of(null);
+
   showButtons = false;
   filtersActive = false;
   selectedFilter = 'All';
@@ -34,8 +39,17 @@ export default class MapComponent implements OnInit {
 
   constructor(
     public modalService: NgbModal,
-    private placesFacade: PlacesFacade
-  ) {}
+    private placesFacade: PlacesFacade,
+    private mapDirectionsService: MapDirectionsService
+  ) {
+    this.placesFacade.getRoute().subscribe((route) => {
+      this.request = route;
+
+      this.directionsResults$ = this.mapDirectionsService
+        .route(this.request)
+        .pipe(map((response) => response.result));
+    });
+  }
 
   ngOnInit(): void {
     this.placesFacade.getPlaces().subscribe((x) => {

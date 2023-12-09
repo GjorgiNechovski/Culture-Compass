@@ -3,7 +3,6 @@ import { Observable, map, of } from 'rxjs';
 import { appApi } from '../../../app/const-variables.models';
 import { HttpClient } from '@angular/common/http';
 import { Place } from '../models/map.models';
-import locations from '../models/hardcoded.models';
 
 @Injectable({
   providedIn: 'root',

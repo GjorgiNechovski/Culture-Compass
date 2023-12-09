@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Place } from '../../models/map.models';
+import { Marker, Place } from '../../models/map.models';
+import { PlacesFacade } from '../../state/map-state.facade';
 
 @Component({
   selector: 'app-location-details',
@@ -10,7 +11,21 @@ export class LocationDetailsComponent {
   @Input() place!: Place;
   @Output() cancelModal = new EventEmitter<void>();
 
+  constructor(private placesFacade: PlacesFacade) {}
+
   selectedView: string = 'general';
+
+  addOrigin(place: Place) {
+    const marker: Marker = { lat: place.xcoordinate, lng: place.ycoordinate };
+
+    this.placesFacade.changeOrigin(marker);
+  }
+
+  addDestination(place: Place) {
+    const marker: Marker = { lat: place.xcoordinate, lng: place.ycoordinate };
+
+    this.placesFacade.changeDestination(marker);
+  }
 
   toggleView(view: string): void {
     this.selectedView = view;

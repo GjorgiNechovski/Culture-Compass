@@ -4,8 +4,14 @@ export const MAP_STORE_KEY = 'product-state';
 
 export interface IMapState {
   places: Place[];
+  route: google.maps.DirectionsRequest;
 }
 
 export const initialState: IMapState = {
   places: [],
+  route: {
+    destination: { lat: 0, lng: 0 },
+    origin: { lat: 0, lng: 0 },
+    travelMode: google.maps.TravelMode.DRIVING,
+  },
 };

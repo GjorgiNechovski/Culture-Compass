@@ -18,6 +18,10 @@
   
   <ng-template #generalInfo>
     <div *ngIf="place">
+
+      <button (click)="addOrigin(place)">Add as Origin Location</button>
+      <button (click)="addDestination(place)">Add as Destination Location</button>
+      
       <p>Opens: {{ place.openingHours }}</p>
       <p>Phone: {{ place.phoneNumber ?? 'N/A' }}</p>
       <p>Website: {{ place.website ?? 'N/A' }}</p>

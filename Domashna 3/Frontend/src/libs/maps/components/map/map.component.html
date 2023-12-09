@@ -6,6 +6,10 @@
                 [options]="mapOptions"
                 (mapClick)="openLocationDetails(location)">
     </map-marker>
+    <ng-container *ngIf="(directionsResults$ | async) as directionsResults">
+      <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
+    </ng-container>
+  
   </google-map>
 
   <div class="floating-button">
@@ -32,7 +36,7 @@
         [ngClass]="{'btn-dark': selectedFilter !== 'archaeological_site', 'btn-warning': selectedFilter === 'archaeological_site'}" 
         (click)="toggleFilters('archaeological_site')">
         <i class="fa fa-paint-brush" aria-hidden="true"></i>
-        Archeology Sites
+        Archeology
       </button>
     </div>
     
