@@ -20,3 +20,10 @@ export const changeFromRoute = createAction(
   '[Map] Change From',
   props<{ origin: Marker }>()
 );
+
+export const fetchCities = createAction('[Map] Fetch Cities');
+
+export const fetchCitiesSuccess = createAction(
+  '[Map] Fetch Cities Success',
+  props<{ cities: string[] }>()
+);

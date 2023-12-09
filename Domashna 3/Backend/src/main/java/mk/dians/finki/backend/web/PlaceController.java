@@ -23,9 +23,11 @@ public class PlaceController {
     @GetMapping
     public List<Place> getAllPlaces(
             @RequestParam(name = "type", required = false) String type,
-            @RequestParam(name = "search", required = false) String search
+            @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "fee", required = false) boolean fee,
+            @RequestParam(name = "city", required = false) String city
     ) {
-        return placeService.getPlaces(type, search);
+        return placeService.getPlaces(type, search, fee, city);
     }
 
     @GetMapping("/id/{id}")
@@ -37,4 +39,8 @@ public class PlaceController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/cities")
+    public List<String> getAllCities(){
+        return this.placeService.getAllCities();
+    }
 }

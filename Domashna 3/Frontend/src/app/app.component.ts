@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private placesFacade: PlacesFacade) {}
 
   ngOnInit(): void {
+    this.placesFacade.fetchCities();
     this.placesFacade.fetchPlaces();
   }
 }

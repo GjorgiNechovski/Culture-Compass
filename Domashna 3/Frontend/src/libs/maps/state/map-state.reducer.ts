@@ -23,5 +23,11 @@ export const MapReducer = createReducer(
       ...state.route,
       destination: { ...destination },
     },
-  }))
+  })),
+  on(MapActions.fetchCitiesSuccess, (state, { cities }) => {
+    return {
+      ...state,
+      cities: cities,
+    };
+  })
 );

@@ -8,8 +8,9 @@ import java.util.Optional;
 
 public interface PlaceService {
 
-    List<Place> getPlaces(String type, String search);
+    List<Place> getPlaces(String type, String search, boolean fee, String city);
 
     Optional<Place> getPlaceById(Long id);
 
+    List<String> getAllCities();
 }

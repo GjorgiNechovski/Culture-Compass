@@ -22,4 +22,19 @@ export class MapEffects {
       )
     );
   });
+
+  fetchCities$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MapActions.fetchPlaces),
+      switchMap(() =>
+        this.service
+          .getCities()
+          .pipe(
+            map((response) =>
+              MapActions.fetchCitiesSuccess({ cities: response })
+            )
+          )
+      )
+    );
+  });
 }

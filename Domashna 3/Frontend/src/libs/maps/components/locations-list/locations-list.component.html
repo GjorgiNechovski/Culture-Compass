@@ -1,0 +1,44 @@
+<div class="floating-button" [formGroup]="searchForm">
+        <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search by name" formControlName="search">
+      <button type="button" [ngClass]="{'btn': true, 'btn-dark': !filtersActive, 'btn-warning': filtersActive}" (click)="showFilters()">
+        <i class="fa fa-sliders"></i>
+      </button>
+    </div>
+    
+    <div class="button-group" *ngIf="showButtons">
+      <button style="width: 10em;" type="button" class="btn" 
+        [ngClass]="{'btn-dark': selectedFilter !== 'All', 'btn-warning': selectedFilter === 'All'}"
+        (click)="toggleFilters('All')">All</button>
+    
+      <button style="width: 10em;" type="button" class="btn" 
+        [ngClass]="{'btn-dark': selectedFilter !== 'history', 'btn-warning': selectedFilter === 'history'}" 
+        (click)="toggleFilters('history')">
+        <i class="fa fa-university" aria-hidden="true"></i>
+        Museums
+      </button>
+    
+      <button style="width: 10em;" type="button" class="btn" 
+        [ngClass]="{'btn-dark': selectedFilter !== 'archaeological_site', 'btn-warning': selectedFilter === 'archaeological_site'}" 
+        (click)="toggleFilters('archaeological_site')">
+        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+        Archeology
+      </button>
+    </div>
+    
+  </div>
+
+
+<div class="container">
+    <div class="text-center">
+        <div *ngFor="let place of places" (click)="openLocationDetails(place)">
+            <img src="{{place.image ? place.image : 'assets/placeholder.png'}}" alt="Example Image" class="max-image-size"> 
+            <p>{{place.name}}</p>
+            <p>Rating: {{place.rating ?? '0.00'}}</p>
+        </div>
+    </div>
+</div>
+
+<button class="float-right" (click)="goToMap()">
+    Open Map
+</button>

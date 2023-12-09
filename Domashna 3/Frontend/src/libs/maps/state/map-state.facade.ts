@@ -48,4 +48,14 @@ export class PlacesFacade {
       MapActions.changeToRoute({ destination: originMarker })
     );
   }
+
+  public fetchCities(): void {
+    this.store.dispatch(MapActions.fetchCities());
+  }
+
+  public getCities(): Observable<string[]> {
+    return this.store
+      .select(MapSelectors.citiesState)
+      .pipe(filter((x): x is string[] => !!x));
+  }
 }

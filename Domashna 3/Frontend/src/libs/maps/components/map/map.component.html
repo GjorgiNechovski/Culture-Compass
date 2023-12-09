@@ -38,7 +38,31 @@
         <i class="fa fa-paint-brush" aria-hidden="true"></i>
         Archeology
       </button>
+
+      <div class="row">        
+        <div class="col" [formGroup]="searchForm">
+          <select class="form-control bg-black text-white" formControlName="fee">
+            <option value=""></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+
+        <div class="col" [formGroup]="searchForm">
+          <select class="form-control bg-black text-white" formControlName="city">
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+          </select>
+          
+        </div>
+    </div>
+      
     </div>
     
   </div>
+
+  <button class="float-right" (click)="goToLocationList()">
+    Open Location List
+   </button>
+
 </div>
+

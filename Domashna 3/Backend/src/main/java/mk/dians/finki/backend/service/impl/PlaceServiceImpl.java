@@ -18,22 +18,65 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public List<Place> getPlaces(String type, String search){
-        if (type!=null && search!=null){
-            return this.placeRepository.findByNameContainingIgnoreCaseAndTypeEquals(search, type);
+    //TODO: zameni go so shablon
+    public List<Place> getPlaces(String type, String search, boolean fee, String city) {
+        if (type != null && search != null && fee && city != null) {
+            return placeRepository.findByCityAndNameContainingIgnoreCaseAndTypeEqualsAndHasEntranceFee(city, search, type, true);
         }
-        if (type!=null){
-            return this.placeRepository.findByType(type);
+        if (type != null && search != null && fee) {
+            return placeRepository.findByNameContainingIgnoreCaseAndTypeEqualsAndHasEntranceFee(search, type, true);
         }
-        if (search!=null){
-            return this.placeRepository.findByNameContainingIgnoreCase(search);
+        if (type != null && search != null && city != null) {
+            return placeRepository.findByCityAndNameContainingAndType(city, search, type);
         }
-        return this.placeRepository.findAll();
+        if (type != null && fee && city != null) {
+            return placeRepository.findByCityAndTypeAndHasEntranceFee(city, type, true);
+        }
+        if (search != null && fee && city != null) {
+            return placeRepository.findByCityAndNameContainingIgnoreCaseAndHasEntranceFee(city, search, true);
+        }
+        if (type != null && city != null) {
+            return placeRepository.findByCityAndType(city, type);
+        }
+        if (search != null && city != null) {
+            return placeRepository.findByCityAndNameContainingIgnoreCase(city, search);
+        }
+        if (fee && city != null) {
+            return placeRepository.findByCityAndHasEntranceFee(city, true);
+        }
+        if (type != null && fee) {
+            return placeRepository.findByTypeAndHasEntranceFee(type, true);
+        }
+        if (search != null && fee) {
+            return placeRepository.findByNameContainingIgnoreCaseAndHasEntranceFee(search, true);
+        }
+        if (type != null && search != null) {
+            return placeRepository.findByNameContainingIgnoreCaseAndTypeEquals(search, type);
+        }
+        if (type != null) {
+            return placeRepository.findByType(type);
+        }
+        if (search != null) {
+            return placeRepository.findByNameContainingIgnoreCase(search);
+        }
+        if (fee) {
+            return placeRepository.findByHasEntranceFee(true);
+        }
+        if (city != null) {
+            return placeRepository.findByCity(city);
+        }
+        return placeRepository.findAll();
     }
+
 
     @Override
     public Optional<Place> getPlaceById(Long id) {
         return placeRepository.findById(id);
+    }
+
+    @Override
+    public List<String> getAllCities() {
+        return this.placeRepository.findAllCities();
     }
 
 }

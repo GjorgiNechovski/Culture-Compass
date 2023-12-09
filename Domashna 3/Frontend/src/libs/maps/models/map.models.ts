@@ -16,7 +16,9 @@ export class Place {
     public website: string | null,
     public openingHours: string | null,
     public phoneNumber: string | null,
-    public type: string | null
+    public type: string | null,
+    public image: string,
+    public rating: number
   ) {
     this.position = {
       lat: xcoordinate,

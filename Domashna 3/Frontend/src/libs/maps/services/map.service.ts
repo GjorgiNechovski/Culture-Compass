@@ -25,7 +25,9 @@ export class MapService {
               apiLocation.website,
               apiLocation.openingHours,
               apiLocation.phoneNumber,
-              apiLocation.type
+              apiLocation.type,
+              apiLocation.image,
+              apiLocation.rating
             );
           });
         })
@@ -44,10 +46,16 @@ export class MapService {
             apiLocation.website,
             apiLocation.openingHours,
             apiLocation.phoneNumber,
-            apiLocation.type
+            apiLocation.type,
+            apiLocation.image,
+            apiLocation.rating
           );
         });
       })
     );
+  }
+
+  getCities(): Observable<string[]> {
+    return this.http.get<string[]>(appApi + '/places/cities');
   }
 }

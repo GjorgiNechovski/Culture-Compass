@@ -1,0 +1,21 @@
+.max-image-size {
+    max-width: 10%;
+    max-height: 10%;
+}
+
+body{
+    background-color: black !important;
+    color: wheat;
+}
+
+.float-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }

@@ -6,6 +6,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, debounceTime, distinctUntilChanged, map, of } from 'rxjs';
 import { PlacesFacade } from '../../state/map-state.facade';
 import { MapDirectionsService } from '@angular/google-maps';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -14,6 +15,7 @@ import { MapDirectionsService } from '@angular/google-maps';
 })
 export default class MapComponent implements OnInit {
   locations: Place[] = [];
+  cities: string[] = [];
   mapLoaded: boolean = false;
 
   mapOptions: google.maps.MapOptions = {
@@ -35,12 +37,15 @@ export default class MapComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({
     search: new FormControl<string>(''),
     type: new FormControl(),
+    fee: new FormControl(),
+    city: new FormControl(),
   });
 
   constructor(
     public modalService: NgbModal,
     private placesFacade: PlacesFacade,
-    private mapDirectionsService: MapDirectionsService
+    private mapDirectionsService: MapDirectionsService,
+    private router: Router
   ) {
     this.placesFacade.getRoute().subscribe((route) => {
       this.request = route;
@@ -65,15 +70,22 @@ export default class MapComponent implements OnInit {
         if (formValue.search) {
           queryParams.push(`search=${formValue.search}`);
         }
-
         if (formValue.type && formValue.type != 'All') {
           queryParams.push(`type=${formValue.type}`);
+        }
+        if (formValue.fee && formValue.fee !== '') {
+          queryParams.push(`fee=${formValue.fee}`);
+        }
+        if (formValue.city && formValue.city !== '') {
+          queryParams.push(`city=${formValue.city}`);
         }
 
         const queryString = queryParams.join('&');
 
         this.placesFacade.fetchPlaces(queryString);
       });
+
+    this.placesFacade.getCities().subscribe((x) => (this.cities = x));
   }
 
   openLocationDetails(location: Place) {
@@ -103,5 +115,9 @@ export default class MapComponent implements OnInit {
       this.showButtons = false;
       this.searchForm.controls['type'].setValue(filter);
     }
+  }
+
+  goToLocationList(): void {
+    this.router.navigate(['/locationList']);
   }
 }

@@ -18,3 +18,8 @@ export const routeState = createSelector(state, (state1: IMapState) => {
   }
   return route;
 });
+
+export const citiesState = createSelector(
+  state,
+  (state1: IMapState) => state1.cities
+);
