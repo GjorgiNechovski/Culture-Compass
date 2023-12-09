@@ -41,7 +41,7 @@
 
       <div class="row">        
         <div class="col" [formGroup]="searchForm">
-          <select class="form-control bg-black text-white" formControlName="fee">
+          <select class="form-control btn btn-dark text-white" formControlName="fee">
             <option value=""></option>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -49,7 +49,8 @@
         </div>
 
         <div class="col" [formGroup]="searchForm">
-          <select class="form-control bg-black text-white" formControlName="city">
+          <select class="form-control btn btn-dark text-white" formControlName="city">
+            <option [value]=""></option>
             <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
           </select>
           

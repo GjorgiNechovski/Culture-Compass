@@ -15,6 +15,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 })
 export class LocationsListComponent implements OnInit {
   places: Place[] = [];
+  cities: string[] = [];
 
   showButtons = false;
   filtersActive = false;
@@ -23,6 +24,8 @@ export class LocationsListComponent implements OnInit {
   searchForm: FormGroup = new FormGroup({
     search: new FormControl<string>(''),
     type: new FormControl(),
+    fee: new FormControl(),
+    city: new FormControl(),
   });
 
   constructor(
@@ -42,15 +45,22 @@ export class LocationsListComponent implements OnInit {
         if (formValue.search) {
           queryParams.push(`search=${formValue.search}`);
         }
-
         if (formValue.type && formValue.type != 'All') {
           queryParams.push(`type=${formValue.type}`);
+        }
+        if (formValue.fee && formValue.fee !== '') {
+          queryParams.push(`fee=${formValue.fee}`);
+        }
+        if (formValue.city && formValue.city !== '') {
+          queryParams.push(`city=${formValue.city}`);
         }
 
         const queryString = queryParams.join('&');
 
         this.placesFacade.fetchPlaces(queryString);
       });
+
+    this.placesFacade.getCities().subscribe((x) => (this.cities = x));
   }
 
   openLocationDetails(location: Place) {

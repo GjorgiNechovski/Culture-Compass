@@ -41,3 +41,8 @@
   background-color: green;
   cursor: pointer;
 }
+
+select.form-control {
+  border: none;
+  outline: none;
+}
