@@ -17,10 +17,12 @@
 
   
   <ng-template #generalInfo>
-    <div *ngIf="place">
+    <div class="mt-3" *ngIf="place">
 
-      <button (click)="addOrigin(place)">Add as Origin Location</button>
-      <button (click)="addDestination(place)">Add as Destination Location</button>
+      <div class="mb-3">
+        <button type="button" class="warning me-2 " (click)="addOrigin(place)">Add as Origin Location</button>
+        <button type="button" class="warning" (click)="addDestination(place)">Add as Destination Location</button>
+      </div>
       
       <p><i class="fa fa-calendar" aria-hidden="true"></i>
         Opens: {{ place.openingHours | naConvert }}</p>
