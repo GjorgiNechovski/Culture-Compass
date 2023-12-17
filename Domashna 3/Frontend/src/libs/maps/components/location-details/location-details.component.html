@@ -1,6 +1,6 @@
 <div class="container text-center pb-3">
-  <h4 class="mt-3">{{ place.name }}</h4>
-  <div>
+  <h4 class="mt-3" id="title">{{ place.name }}</h4>
+  <div class="pics">
     <img src="assets/placeholder.png" alt="Example Image" class="mx-auto d-block">
   </div>
 
@@ -17,7 +17,7 @@
 </div>
 
 
-  
+
   <ng-template #generalInfo>
     <div class="mt-3" *ngIf="place">
 
@@ -25,24 +25,27 @@
         <button type="button" class="warning me-2 " (click)="addOrigin(place)">Add as Origin Location</button>
         <button type="button" class="warning" (click)="addDestination(place)">Add as Destination Location</button>
       </div>
-      
-      <p><i class="fa fa-calendar" aria-hidden="true"></i>
-        Opens: {{ place.openingHours | naConvert }}</p>
-      <p><i class="fa fa-phone" aria-hidden="true"></i>
-        Phone: {{ place.phoneNumber | naConvert }}</p>
-      <p><i class="fa fa-globe" aria-hidden="true"></i>
-        Website: {{ place.website | naConvert}}</p>
-      <p><i class="fa fa-ticket" aria-hidden="true"></i>
-         Price: {{ place.hasEntranceFee | price }}</p>
+
+      <div class="details">
+        <p><i class="fa fa-calendar" aria-hidden="true"></i>
+          Opens: {{ place.openingHours | naConvert }}</p>
+        <p><i class="fa fa-phone" aria-hidden="true"></i>
+          Phone: {{ place.phoneNumber | naConvert }}</p>
+        <p><i class="fa fa-globe" aria-hidden="true"></i>
+          Website: {{ place.website | naConvert}}</p>
+        <p><i class="fa fa-ticket" aria-hidden="true"></i>
+          Price: {{ place.hasEntranceFee | price }}</p>
+      </div>
     </div>
   </ng-template>
-  
+
   <ng-template #contactInfo>
-    <div *ngIf="place">
-        <p>User 1:</p>
+    <div *ngIf="place" class="reviews">
+      <div class="review_container">
+        <h4>User 1:</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id earum modi. Quisquam non labore fugiat atque dignissimos aspernatur expedita omnis, voluptatum eligendi odio exercitationem blanditiis sapiente architecto inventore.</p>
-        <p>User 2:</p>
+        <h4>User 2:</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, numquam ex? Laborum, a sequi expedita vel accusantium officiis minus totam blanditiis corporis, quos assumenda odit iste neque quibusdam? Fuga, accusantium.</p>
+      </div>
     </div>
   </ng-template>
-  
