@@ -43,4 +43,17 @@ public class PlaceController {
     public List<String> getAllCities(){
         return this.placeService.getAllCities();
     }
+    @PostMapping
+    public ResponseEntity<Place> savePlace(
+            @RequestParam String name,
+            @RequestParam double xCoordinate,
+            @RequestParam double yCoordinate,
+            @RequestParam String city,
+            @RequestParam String imageUrl,
+            @RequestParam String phoneNumber) {
+
+        Place savedPlace = placeService.savePlace(name, xCoordinate, yCoordinate, city, imageUrl, phoneNumber);
+
+        return new ResponseEntity<>(savedPlace, HttpStatus.CREATED);
+    }
 }

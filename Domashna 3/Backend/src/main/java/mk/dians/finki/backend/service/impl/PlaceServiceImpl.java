@@ -79,4 +79,17 @@ public class PlaceServiceImpl implements PlaceService {
         return this.placeRepository.findAllCities();
     }
 
+    public Place savePlace(String name, double xCoordinate, double yCoordinate, String city, String imageUrl, String phoneNumber) {
+        Place place = new Place();
+        place.setName(name);
+        place.setXCoordinate(xCoordinate);
+        place.setYCoordinate(yCoordinate);
+        place.setCity(city);
+        place.setImageUrl(imageUrl);
+        place.setPhoneNumber(phoneNumber);
+
+
+        return placeRepository.save(place);
+    }
+
 }

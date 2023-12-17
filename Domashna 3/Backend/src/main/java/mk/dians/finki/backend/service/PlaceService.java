@@ -13,4 +13,7 @@ public interface PlaceService {
     Optional<Place> getPlaceById(Long id);
 
     List<String> getAllCities();
+
+    Place savePlace(String name, double xCoordinate, double yCoordinate, String city, String imageUrl, String phoneNumber);
 }
+

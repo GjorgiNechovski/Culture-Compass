@@ -4,11 +4,13 @@ package mk.dians.finki.backend.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,7 +20,7 @@ import java.io.Serializable;
 public class Place implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 2L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,9 +28,9 @@ public class Place implements Serializable {
     private String name;
     private String city;
 
-    @NotBlank(message = "X coord cannot be blank")
+    @NotNull(message = "X coord cannot be null")
     private double xCoordinate;
-    @NotBlank(message = "Y coord cannot be blank")
+    @NotNull(message = "Y coord cannot be null")
     private double yCoordinate;
 
     private Boolean hasEntranceFee;
@@ -36,5 +38,10 @@ public class Place implements Serializable {
     private String openingHours;
     private String phoneNumber;
     private String type;
+
+    private String imageUrl;
+
+    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
 }
