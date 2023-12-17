@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url("../../../../assets/map-background.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
 .container {
   position: relative;
   width: 70%;
@@ -9,23 +16,68 @@
 }
 
 .arrow{
-  margin-top: 5px;
+  margin: 10px;
   background: url("../../../../assets/arrow.png") no-repeat;
   background-size: 25px;
   width: 25px;
   height: 25px;
+  cursor: pointer;
+}
+
+.arrow:hover{
+  opacity: 0.5;
 }
 
 .card{
   background-color: rgba(29,29,29,1);
-  display: block;
+  display: inline-block;
   margin-top: 40px;
   border-radius: 10px;
-  width: 50%;
+  width: 40%;
+  height: 400px;
+  vertical-align: top;
+}
+
+.card:nth-child(odd){
+  margin-right: 20px;
+}
+
+.card:nth-child(even){
+  margin-left: 20px;
+}
+
+.card > img{
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+body > app-root > app-locations-list > div > form > div.text-center > span > div > p:nth-child(2){
+  margin: 20px;
 }
 
 .button-group button {
   width: 100px;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 0;
+  margin-top: -15px;
+}
+
+.star {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.star::before {
+  content: '\2605';
+}
+
+.rating:hover .star {
+  color: #f7d000;
 }
