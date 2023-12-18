@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mk.dians.finki.backend.model.enums.UserRole;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -26,7 +27,15 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
-    private String role;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
+    public User(String name, String email, String username, String password) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role = UserRole.USER;
+    }
 }
