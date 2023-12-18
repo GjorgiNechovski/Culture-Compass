@@ -27,12 +27,12 @@ CREATE TABLE places (
 CREATE TABLE reviews (
                          id SERIAL PRIMARY KEY,
                         comment VARCHAR(255),
+						rating DOUBLE PRECISION,
                         place_id BIGINT,
                         user_id BIGINT,
                         FOREIGN KEY (place_id) REFERENCES places(id),
                         FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
 COPY places(name, city, x_coordinate, y_coordinate, has_entrance_fee, website, opening_hours, phone_number, type,
             user_id, image_url)
 FROM '/docker-entrypoint-initdb.d/data.csv' DELIMITER ',' CSV HEADER;

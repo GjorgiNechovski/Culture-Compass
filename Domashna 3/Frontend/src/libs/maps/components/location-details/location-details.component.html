@@ -41,11 +41,30 @@
 
   <ng-template #contactInfo>
     <div *ngIf="place" class="reviews">
-      <div class="review_container">
-        <h4>User 1:</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id earum modi. Quisquam non labore fugiat atque dignissimos aspernatur expedita omnis, voluptatum eligendi odio exercitationem blanditiis sapiente architecto inventore.</p>
-        <h4>User 2:</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, numquam ex? Laborum, a sequi expedita vel accusantium officiis minus totam blanditiis corporis, quos assumenda odit iste neque quibusdam? Fuga, accusantium.</p>
-      </div>
+      <ng-container *ngIf="!addingReview; else addReviewForm">
+        <button type="button" class="warning" (click)="toggleAddReview()">Add a review</button>
+      </ng-container>
+      <ng-template #addReviewForm>
+        <ng-container *ngIf="selectedView === 'contact'">
+          <form [formGroup]="newReviewForm" (ngSubmit)="submitReview()" #reviewForm="ngForm">
+            <div class="mb-3">
+              <label for="reviewComment" class="form-label">Your Comment:</label>
+              <textarea id="reviewComment" class="form-control" formControlName="comment" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="reviewRating" class="form-label">Your Rating:</label>
+              <input type="number" id="reviewRating" class="form-control" formControlName="rating" required>
+            </div>
+            <div>
+              <button type="button" class="danger me-2" (click)="cancelAddReview()">Cancel</button>
+              <button type="submit" class="success">Submit Review</button>
+            </div>
+          </form>
+        </ng-container>
+      </ng-template>
+      
     </div>
+    
+    
   </ng-template>
+  

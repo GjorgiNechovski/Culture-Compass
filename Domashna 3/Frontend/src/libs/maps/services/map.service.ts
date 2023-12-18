@@ -28,7 +28,8 @@ export class MapService {
               apiLocation.type,
               apiLocation.image,
               apiLocation.rating,
-              apiLocation.imageUrl
+              apiLocation.imageUrl,
+              apiLocation.reviews
             );
           });
         })
@@ -50,7 +51,8 @@ export class MapService {
             apiLocation.type,
             apiLocation.image,
             apiLocation.rating,
-            apiLocation.imageUrl
+            apiLocation.imageUrl,
+            apiLocation.reviews
           );
         });
       })

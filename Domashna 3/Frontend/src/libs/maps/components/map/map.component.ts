@@ -120,4 +120,8 @@ export default class MapComponent implements OnInit {
   goToLocationList(): void {
     this.router.navigate(['/locationList']);
   }
+
+  goToAddLocation(): void {
+    this.router.navigate(['/addPlace']);
+  }
 }

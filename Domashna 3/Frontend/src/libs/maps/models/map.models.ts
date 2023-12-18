@@ -1,3 +1,5 @@
+import { Review } from './review.models';
+
 export interface Marker {
   lat: number;
   lng: number;
@@ -19,7 +21,8 @@ export class Place {
     public type: string | null,
     public image: string,
     public rating: number,
-    public imageUrl: string
+    public imageUrl: string,
+    public reviews: Review[]
   ) {
     this.position = {
       lat: xcoordinate,

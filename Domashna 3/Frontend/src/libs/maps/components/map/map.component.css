@@ -43,6 +43,19 @@
   font-weight: bold;
 }
 
+.float-left{
+  position: fixed;
+  top: 15px;
+  left: 150px;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: white;
+  background-color: rgba(33,37,41,1);
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .open{
   position: absolute;
   top: 25px;

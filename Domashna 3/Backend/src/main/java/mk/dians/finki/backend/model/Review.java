@@ -23,6 +23,7 @@ public class Review implements Serializable {
     private Long id;
 
     private String comment;
+    private double rating;
 
     @ManyToOne
     @JoinColumn(name = "place_id")
