@@ -2,9 +2,12 @@ package mk.dians.finki.backend.service.impl;
 
 import mk.dians.finki.backend.model.Place;
 import mk.dians.finki.backend.repository.PlaceRepository;
+import mk.dians.finki.backend.service.ImageService;
 import mk.dians.finki.backend.service.PlaceService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,9 +15,11 @@ import java.util.Optional;
 public class PlaceServiceImpl implements PlaceService {
 
     private final PlaceRepository placeRepository;
+    private final ImageService imageService;
 
-    public PlaceServiceImpl(PlaceRepository placeRepository) {
+    public PlaceServiceImpl(PlaceRepository placeRepository, ImageService imageService) {
         this.placeRepository = placeRepository;
+        this.imageService = imageService;
     }
 
     @Override
@@ -79,14 +84,28 @@ public class PlaceServiceImpl implements PlaceService {
         return this.placeRepository.findAllCities();
     }
 
-    public Place savePlace(String name, double xCoordinate, double yCoordinate, String city, String imageUrl, String phoneNumber) {
+    public Place savePlace(String name,
+                           double xCoordinate, double yCoordinate,
+                           String city,
+                           MultipartFile imageUrl,
+                           String phoneNumber,
+                           String type,
+                           boolean hasEntranceFee) throws IOException {
         Place place = new Place();
+
+        if(imageUrl!=null) {
+            String image = this.imageService.uploadFile(imageUrl);
+            place.setImageUrl(image);
+        }
+        if (phoneNumber != null){
+            place.setPhoneNumber(phoneNumber);
+        }
+
         place.setName(name);
         place.setXCoordinate(xCoordinate);
         place.setYCoordinate(yCoordinate);
         place.setCity(city);
-        place.setImageUrl(imageUrl);
-        place.setPhoneNumber(phoneNumber);
+        place.setType(type);
 
 
         return placeRepository.save(place);

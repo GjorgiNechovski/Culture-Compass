@@ -5,7 +5,9 @@ import mk.dians.finki.backend.service.PlaceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,16 +45,24 @@ public class PlaceController {
     public List<String> getAllCities(){
         return this.placeService.getAllCities();
     }
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST, value = "/addLocation", consumes = "multipart/form-data")
     public ResponseEntity<Place> savePlace(
             @RequestParam String name,
             @RequestParam double xCoordinate,
             @RequestParam double yCoordinate,
             @RequestParam String city,
-            @RequestParam String imageUrl,
-            @RequestParam String phoneNumber) {
+            @RequestParam(value = "image", required = false) MultipartFile imageUrl,
+            @RequestParam(required = false) String phoneNumber,
+            @RequestParam String type,
+            @RequestParam (required = false) boolean hasEntranceFee) {
 
-        Place savedPlace = placeService.savePlace(name, xCoordinate, yCoordinate, city, imageUrl, phoneNumber);
+        Place savedPlace = null;
+
+        try {
+            savedPlace = placeService.savePlace(name, xCoordinate, yCoordinate, city, imageUrl, phoneNumber, type, hasEntranceFee);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
         return new ResponseEntity<>(savedPlace, HttpStatus.CREATED);
     }

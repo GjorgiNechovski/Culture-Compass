@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { LocationsListComponent } from './components/locations-list/locations-list.component';
 import { NaConvertPipe } from './pipes/na-convert.pipe';
 import { PricePipe } from './pipes/price.pipe';
+import { AddLocationComponent } from './components/add-location/add-location.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PricePipe } from './pipes/price.pipe';
     LocationsListComponent,
     NaConvertPipe,
     PricePipe,
+    AddLocationComponent,
   ],
   imports: [
     CommonModule,

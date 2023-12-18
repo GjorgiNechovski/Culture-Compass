@@ -18,11 +18,24 @@ export class Place {
     public phoneNumber: string | null,
     public type: string | null,
     public image: string,
-    public rating: number
+    public rating: number,
+    public imageUrl: string
   ) {
     this.position = {
       lat: xcoordinate,
       lng: ycoordinate,
     };
   }
+}
+
+export class UploadLocationModel {
+  constructor(
+    public name: string,
+    public xCoordinate: string,
+    public yCoordinate: string,
+    public city: string,
+    public imageUrl: File,
+    public phoneNumber: string,
+    public type: string
+  ) {}
 }

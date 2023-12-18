@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 import { appApi } from '../../../app/const-variables.models';
-import { HttpClient } from '@angular/common/http';
-import { Place } from '../models/map.models';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Place, UploadLocationModel } from '../models/map.models';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,8 @@ export class MapService {
               apiLocation.phoneNumber,
               apiLocation.type,
               apiLocation.image,
-              apiLocation.rating
+              apiLocation.rating,
+              apiLocation.imageUrl
             );
           });
         })
@@ -48,7 +49,8 @@ export class MapService {
             apiLocation.phoneNumber,
             apiLocation.type,
             apiLocation.image,
-            apiLocation.rating
+            apiLocation.rating,
+            apiLocation.imageUrl
           );
         });
       })
@@ -57,5 +59,29 @@ export class MapService {
 
   getCities(): Observable<string[]> {
     return this.http.get<string[]>(appApi + '/places/cities');
+  }
+
+  uploadLocation(location: UploadLocationModel): Observable<void> {
+    const data = new FormData();
+    data.append('name', location.name);
+    data.append('xCoordinate', location.xCoordinate);
+    data.append('yCoordinate', location.yCoordinate);
+    data.append('type', location.type);
+
+    if (location.imageUrl !== null) {
+      data.append('image', location.imageUrl);
+    }
+
+    data.append('city', location.city);
+    if (location.phoneNumber !== null) {
+      data.append('phoneNumber', location.phoneNumber);
+    }
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+
+    return this.http.post<void>(appApi + '/places/addLocation', data, {
+      headers,
+    });
   }
 }
