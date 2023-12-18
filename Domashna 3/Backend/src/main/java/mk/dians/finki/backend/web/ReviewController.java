@@ -1,7 +1,9 @@
 package mk.dians.finki.backend.web;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import mk.dians.finki.backend.model.Review;
+import mk.dians.finki.backend.model.User;
 import mk.dians.finki.backend.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,11 +35,13 @@ public class ReviewController {
                      .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/place/{placeId}/user/{userId}")
+    @PostMapping("/place/{placeId}")
     public ResponseEntity<Review> addReview(
             @PathVariable Long placeId,
-            @PathVariable Long userId,
-            @Valid @RequestBody Review review) {
+            @Valid @RequestBody Review review,
+            HttpSession session) {
+        Long userId = ((User)session.getAttribute("user")).getId();
+
         Review savedReview = reviewService.saveReview(placeId, userId, review);
         return new ResponseEntity<>(savedReview, HttpStatus.CREATED);
     }

@@ -8,6 +8,7 @@ import mk.dians.finki.backend.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -59,5 +60,12 @@ public class AuthenticationController {
         session.removeAttribute("user");
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/currentUser")
+    public ResponseEntity<Object> getCurrentUser(HttpSession session){
+        User user = (User) session.getAttribute("user");
+
+        return ResponseEntity.ok().body(user);
     }
 }
