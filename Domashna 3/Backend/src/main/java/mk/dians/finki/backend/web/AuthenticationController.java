@@ -10,9 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/api")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
@@ -24,14 +26,12 @@ public class AuthenticationController {
     public ResponseEntity<Object> registerNewUser(
             @RequestParam String username,
             @RequestParam String email,
-            @RequestParam String name,
-            @RequestParam String password,
-            @RequestParam String confirmPassword){
+            @RequestParam String password){
 
         try {
-            authenticationService.registerNewUser(username, email, name, password, confirmPassword);
+            authenticationService.registerNewUser(username, email, password);
         }
-        catch (PasswordsNotMatching e){
+        catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 

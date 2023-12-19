@@ -9,6 +9,7 @@ import { RoutingModule } from 'src/libs/routing/routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationModule } from 'src/libs/authentication/authentication.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     NgbModule,
     MapsModule,
+    AuthenticationModule,
     RoutingModule,
     HttpClientModule,
     RouterModule.forRoot([]),

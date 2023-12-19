@@ -23,7 +23,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
     private String email;
     private String username;
     private String password;
@@ -31,8 +30,7 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    public User(String name, String email, String username, String password) {
-        this.name = name;
+    public User(String email, String username, String password) {
         this.email = email;
         this.username = username;
         this.password = password;
