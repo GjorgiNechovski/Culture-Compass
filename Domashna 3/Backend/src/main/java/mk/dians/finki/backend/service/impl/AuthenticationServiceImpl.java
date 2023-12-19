@@ -17,16 +17,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public void registerNewUser(String username, String email, String name, String password, String confirmPassword) {
-        if (!password.equals(confirmPassword)){
-            throw new PasswordsNotMatching();
-        }
+    public void registerNewUser(String username, String email, String password) {
 
         if (userRepository.findByEmail(email) != null || userRepository.findByUsername(username) != null){
             throw new UserNameExists();
         }
 
-        User user = new User(name, email, username, password);
+        User user = new User(email, username, password);
         userRepository.save(user);
     }
 
