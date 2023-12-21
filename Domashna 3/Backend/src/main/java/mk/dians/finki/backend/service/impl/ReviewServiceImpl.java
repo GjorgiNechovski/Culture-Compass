@@ -35,19 +35,15 @@ public class ReviewServiceImpl implements ReviewService {
     public Review saveReview(Long placeId, Long userId, Review review) {
 
         Optional<Place> place = placeRepository.findById(placeId);
-
-
         Optional<User> user = userRepository.findById(userId);
 
         if(place.isEmpty() || user.isEmpty()){
             return null;
         }
 
-
-
         review.setPlace(place.get());
         review.setUser(user.get());
-
+        
         return reviewRepository.save(review);
     }
 

@@ -1,5 +1,6 @@
 package mk.dians.finki.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,12 +26,18 @@ public class Review implements Serializable {
     private String comment;
     private double rating;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "place_id")
     private Place place;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Review(String comment, double rating) {
+        this.comment = comment;
+        this.rating = rating;
+    }
 }

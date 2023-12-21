@@ -4,6 +4,7 @@ import { PlacesFacade } from '../../state/map-state.facade';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UploadNewReview } from '../../models/review.models';
 import { ReviewService } from '../../services/review.service';
+import { AuthenticationService } from 'src/libs/authentication/services/authentication.service';
 
 @Component({
   selector: 'app-location-details',
@@ -23,7 +24,8 @@ export class LocationDetailsComponent {
 
   constructor(
     private placesFacade: PlacesFacade,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private authService: AuthenticationService
   ) {}
 
   selectedView: string = 'general';
@@ -50,6 +52,32 @@ export class LocationDetailsComponent {
     this.reviewService.addReview(newReview).subscribe();
 
     this.addingReview = false;
+  }
+
+  showButtons(): void {
+    if (
+      this.authService.user != null &&
+      this.authService.user.role === 'ADMIN'
+    ) {
+      const image = document.getElementById('myImage');
+      const buttons = document.getElementById('myButtons');
+
+      image!.style.filter = 'blur(5px)';
+      buttons!.style.display = 'block';
+    }
+  }
+
+  hideButtons(): void {
+    if (
+      this.authService.user != null &&
+      this.authService.user.role === 'ADMIN'
+    ) {
+      const image = document.getElementById('myImage');
+      const buttons = document.getElementById('myButtons');
+
+      image!.style.filter = 'none';
+      buttons!.style.display = 'none';
+    }
   }
 
   toggleView(view: string): void {

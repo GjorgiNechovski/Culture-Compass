@@ -33,7 +33,7 @@ export class LogInComponent implements AfterViewInit {
     const password = this.loginForm.controls['password'].value;
 
     this.authService.logIn(email, password).subscribe(
-      () => {
+      (x) => {
         this.router.navigateByUrl('/map');
       },
       (error) => {

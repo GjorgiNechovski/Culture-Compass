@@ -62,6 +62,7 @@ export default class MapComponent implements OnInit {
       this.mapLoaded = true;
     });
 
+    //TODO: change with factory!
     this.searchForm.valueChanges
       .pipe(debounceTime(400), distinctUntilChanged())
       .subscribe((formValue) => {

@@ -2,24 +2,23 @@ package mk.dians.finki.backend.web;
 
 import jakarta.servlet.http.HttpSession;
 import mk.dians.finki.backend.model.User;
-import mk.dians.finki.backend.model.exceptions.PasswordsNotMatching;
 import mk.dians.finki.backend.model.exceptions.WrongCredentials;
 import mk.dians.finki.backend.service.AuthenticationService;
+import mk.dians.finki.backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
+    private final UserService userService;
 
-    public AuthenticationController(AuthenticationService authenticationService) {
+    public AuthenticationController(AuthenticationService authenticationService, UserService userService) {
         this.authenticationService = authenticationService;
+        this.userService = userService;
     }
 
     @PostMapping("/register")
@@ -52,7 +51,7 @@ public class AuthenticationController {
         }
 
         session.setAttribute("user", user);
-        return ResponseEntity.ok(true);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/logout")
@@ -62,10 +61,9 @@ public class AuthenticationController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/currentUser")
-    public ResponseEntity<Object> getCurrentUser(HttpSession session){
-        User user = (User) session.getAttribute("user");
+    @GetMapping("/currentUser/{userId}")
+    public ResponseEntity<Object> getCurrentUser(@PathVariable Long userId, HttpSession session){
 
-        return ResponseEntity.ok().body(user);
+        return ResponseEntity.ok().body(userService.findById(userId));
     }
 }
