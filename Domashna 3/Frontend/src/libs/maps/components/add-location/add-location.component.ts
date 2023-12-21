@@ -72,4 +72,8 @@ export class AddLocationComponent implements OnInit {
 
     fileInput.click();
   }
+
+  goToMap() {
+    this.router.navigate(['/map'])
+  }
 }
