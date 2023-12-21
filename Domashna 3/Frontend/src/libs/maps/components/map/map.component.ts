@@ -7,6 +7,7 @@ import { Observable, debounceTime, distinctUntilChanged, map, of } from 'rxjs';
 import { PlacesFacade } from '../../state/map-state.facade';
 import { MapDirectionsService } from '@angular/google-maps';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/libs/authentication/services/authentication.service';
 
 @Component({
   selector: 'app-map',
@@ -45,6 +46,7 @@ export default class MapComponent implements OnInit {
     public modalService: NgbModal,
     private placesFacade: PlacesFacade,
     private mapDirectionsService: MapDirectionsService,
+    private authService: AuthenticationService,
     private router: Router
   ) {
     this.placesFacade.getRoute().subscribe((route) => {
@@ -124,5 +126,13 @@ export default class MapComponent implements OnInit {
 
   goToAddLocation(): void {
     this.router.navigate(['/addPlace']);
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -5,6 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { UploadNewReview } from '../../models/review.models';
 import { ReviewService } from '../../services/review.service';
 import { AuthenticationService } from 'src/libs/authentication/services/authentication.service';
+import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-location-details',
@@ -25,7 +26,8 @@ export class LocationDetailsComponent {
   constructor(
     private placesFacade: PlacesFacade,
     private reviewService: ReviewService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private loctionService: MapService
   ) {}
 
   selectedView: string = 'general';
@@ -52,6 +54,12 @@ export class LocationDetailsComponent {
     this.reviewService.addReview(newReview).subscribe();
 
     this.addingReview = false;
+  }
+
+  delete() {
+    this.loctionService
+      .deleteLocation(this.authService.user?.id!, this.place.id)
+      .subscribe(() => window.location.reload());
   }
 
   showButtons(): void {

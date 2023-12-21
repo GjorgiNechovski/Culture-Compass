@@ -43,10 +43,36 @@
   font-weight: bold;
 }
 
+.float-right-logout{
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: white;
+  background-color: rgba(33,37,41,1);
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .float-left{
   position: fixed;
   top: 15px;
   left: 220px;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: white;
+  background-color: rgba(33,37,41,1);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.float-left-login{
+  position: fixed;
+  top: 15px;
+  left: 20px;
   padding: 10px;
   border-radius: 15px;
   font-size: 14px;

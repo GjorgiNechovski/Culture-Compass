@@ -29,6 +29,20 @@ export class Place {
       lng: ycoordinate,
     };
   }
+
+  calculateAverageRating(): number {
+    if (this.reviews.length === 0) {
+      return 0;
+    }
+
+    const totalRating = this.reviews.reduce(
+      (sum, review) => sum + review.rating,
+      0
+    );
+    const averageRating = totalRating / this.reviews.length;
+
+    return averageRating;
+  }
 }
 
 export class UploadLocationModel {

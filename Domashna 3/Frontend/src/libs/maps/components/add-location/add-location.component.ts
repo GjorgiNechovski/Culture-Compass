@@ -54,7 +54,7 @@ export class AddLocationComponent implements OnInit {
 
     //TODO: Change it with shablon later on
     this.mapService.uploadLocation(uploadLocation).subscribe(() => {
-      this.router.navigateByUrl('map');
+      this.router.navigate(['map']);
     });
   }
 
@@ -74,6 +74,6 @@ export class AddLocationComponent implements OnInit {
   }
 
   goToMap() {
-    this.router.navigate(['/map'])
+    this.router.navigate(['/map']);
   }
 }

@@ -84,6 +84,11 @@ public class PlaceServiceImpl implements PlaceService {
         return this.placeRepository.findAllCities();
     }
 
+    @Override
+    public void deleteById(Long id) {
+        this.placeRepository.deleteById(id);
+    }
+
     public Place savePlace(String name,
                            double xCoordinate, double yCoordinate,
                            String city,

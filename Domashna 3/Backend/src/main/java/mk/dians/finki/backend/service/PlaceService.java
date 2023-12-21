@@ -15,6 +15,7 @@ public interface PlaceService {
     Optional<Place> getPlaceById(Long id);
 
     List<String> getAllCities();
+    void deleteById(Long id);
 
     Place savePlace(String name, double xCoordinate, double yCoordinate, String city, MultipartFile imageUrl, String phoneNumber, String type, boolean hasEntranceFee) throws IOException;
 }

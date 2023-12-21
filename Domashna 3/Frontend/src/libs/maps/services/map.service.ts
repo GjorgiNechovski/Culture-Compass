@@ -86,4 +86,10 @@ export class MapService {
       headers,
     });
   }
+
+  public deleteLocation(userId: number, placeId: number): Observable<void> {
+    return this.http.delete<void>(
+      appApi + `/places/delete?userId=${userId}&placeId=${placeId}`
+    );
+  }
 }

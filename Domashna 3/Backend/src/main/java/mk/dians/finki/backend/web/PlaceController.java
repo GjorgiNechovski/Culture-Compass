@@ -1,7 +1,10 @@
 package mk.dians.finki.backend.web;
 
 import mk.dians.finki.backend.model.Place;
+import mk.dians.finki.backend.model.User;
+import mk.dians.finki.backend.model.enums.UserRole;
 import mk.dians.finki.backend.service.PlaceService;
+import mk.dians.finki.backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +17,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/places")
 public class PlaceController {
-
-
     private final PlaceService placeService;
+    private final UserService userService;
 
-    public PlaceController(PlaceService placeService) {
+    public PlaceController(PlaceService placeService, UserService userService) {
         this.placeService = placeService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -65,5 +68,19 @@ public class PlaceController {
         }
 
         return new ResponseEntity<>(savedPlace, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> deletePlace(@RequestParam Long userId,
+                                            @RequestParam Long placeId){
+        User user = userService.findById(userId).get();
+
+        if (!user.getRole().equals(UserRole.ADMIN)){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        placeService.deleteById(placeId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

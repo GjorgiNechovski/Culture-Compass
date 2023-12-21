@@ -72,4 +72,9 @@ export class AuthenticationService {
         });
     }
   }
+
+  public logout(): void {
+    this.cookieService.deleteCookie('token');
+    this.user = null;
+  }
 }
