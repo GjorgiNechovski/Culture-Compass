@@ -120,4 +120,8 @@ export class MapService {
       appApi + `/places/delete?userId=${userId}&placeId=${placeId}`
     );
   }
+
+  public getLocationById(id: number): Observable<Place> {
+    return this.http.get<Place>(appApi + '/places/id/' + id);
+  }
 }

@@ -4,7 +4,6 @@ import { MapService } from '../../services/map.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Place, UploadEditLocationModel } from '../../models/map.models';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-edit-location',
@@ -38,7 +37,7 @@ export class EditLocationComponent implements OnInit {
       const id = +parts[parts.length - 1];
 
       const foundPlace = places.find((place) => place.id === id);
-      this.place = foundPlace;
+      this.mapService.getLocationById(id).subscribe();
 
       this.editPlaceForm.patchValue({
         name: foundPlace!.name,

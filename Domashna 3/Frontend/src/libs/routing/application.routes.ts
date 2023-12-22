@@ -5,6 +5,9 @@ import { AddLocationComponent } from '../maps/components/add-location/add-locati
 import { LogInComponent } from '../authentication/components/log-in/log-in.component';
 import { RegisterComponent } from '../authentication/components/register/register.component';
 import { EditLocationComponent } from '../maps/components/edit-location/edit-location.component';
+import { Component404 } from './components/404/404.component';
+import { Component403 } from './components/403/403.component';
+import { AdminGuard } from '../authentication/services/admin.guard.service';
 
 export const routes: Routes = [
   {
@@ -34,10 +37,19 @@ export const routes: Routes = [
   },
   {
     path: 'editPlace/:id',
+    canActivate: [AdminGuard],
     component: EditLocationComponent,
   },
   {
+    path: '404',
+    component: Component404,
+  },
+  {
+    path: '403',
+    component: Component403,
+  },
+  {
     path: '**',
-    redirectTo: '/map',
+    redirectTo: '/404',
   },
 ];
