@@ -1,6 +1,7 @@
 package mk.dians.finki.backend.service.impl;
 
 import mk.dians.finki.backend.model.Place;
+import mk.dians.finki.backend.model.exceptions.PlaceNotExistent;
 import mk.dians.finki.backend.repository.PlaceRepository;
 import mk.dians.finki.backend.service.ImageService;
 import mk.dians.finki.backend.service.PlaceService;
@@ -114,6 +115,21 @@ public class PlaceServiceImpl implements PlaceService {
 
 
         return placeRepository.save(place);
+    }
+
+    @Override
+    public Place editPlace(Long id, String name, double xCoordinate, double yCoordinate, String city, String phoneNumber, String type, boolean hasEntranceFee) {
+        Place place = this.getPlaceById(id).orElseThrow(PlaceNotExistent::new);
+
+        place.setName(name);
+        place.setXCoordinate(xCoordinate);
+        place.setYCoordinate(yCoordinate);
+        place.setCity(city);
+        place.setPhoneNumber(phoneNumber);
+        place.setType(type);
+        place.setHasEntranceFee(hasEntranceFee);
+
+        return this.placeRepository.save(place);
     }
 
 }

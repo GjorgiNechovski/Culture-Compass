@@ -4,7 +4,7 @@
     <div (mouseover)="showButtons()" (mouseleave)="hideButtons()" class="image-container">
         <img src="{{place.imageUrl ? place.imageUrl : 'assets/placeholder.png'}}" alt="Example Image" class="mx-auto d-block image" id="myImage">
         <div class="buttons" id="myButtons">
-            <button class="warning">Направи измени</button>
+            <button class="warning" (click)="edit()">Направи измени</button>
             <button class="danger" (click)="delete()">Избриши локација</button>
         </div>
     </div>
@@ -49,7 +49,11 @@
   <ng-template #contactInfo>
     <div *ngIf="place" class="reviews">
       <ng-container *ngIf="!addingReview; else addReviewForm">
-        <button type="button" class="warning" (click)="toggleAddReview()">Постави преглед</button>
+        <button *ngIf="authService.user !== null" type="button" class="warning" (click)="toggleAddReview()">Постави преглед</button>
+        <div *ngIf="authService.user === null">
+          <p>Треба да бидете најавени за да оставите преглед.</p>
+           <button  type="button" class="warning" (click)="login()">НАЈАВИ СЕ</button>
+        </div>
       </ng-container>
       <div style="border: 1px solid gray;" *ngFor="let review of place.reviews" class="review">
         <p><strong>Comment: </strong>{{ review.comment }}</p>

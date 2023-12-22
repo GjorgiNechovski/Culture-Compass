@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 import { appApi } from '../../../app/const-variables.models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Place, UploadLocationModel } from '../models/map.models';
+import {
+  Place,
+  UploadEditLocationModel,
+  UploadLocationModel,
+} from '../models/map.models';
 
 @Injectable({
   providedIn: 'root',
@@ -85,6 +89,30 @@ export class MapService {
     return this.http.post<void>(appApi + '/places/addLocation', data, {
       headers,
     });
+  }
+
+  editLocation(location: UploadEditLocationModel): Observable<void> {
+    const data = new FormData();
+    data.append('name', location.name);
+    data.append('xCoordinate', location.xCoordinate);
+    data.append('yCoordinate', location.yCoordinate);
+    data.append('type', location.type);
+    data.append('city', location.city);
+
+    if (location.phoneNumber !== null) {
+      data.append('phoneNumber', location.phoneNumber);
+    }
+
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post<void>(
+      appApi + `/places/${location.id}/editLocation`,
+      data,
+      {
+        headers,
+      }
+    );
   }
 
   public deleteLocation(userId: number, placeId: number): Observable<void> {

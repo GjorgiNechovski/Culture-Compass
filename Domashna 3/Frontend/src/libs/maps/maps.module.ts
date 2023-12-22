@@ -19,6 +19,7 @@ import { LocationsListComponent } from './components/locations-list/locations-li
 import { NaConvertPipe } from './pipes/na-convert.pipe';
 import { PricePipe } from './pipes/price.pipe';
 import { AddLocationComponent } from './components/add-location/add-location.component';
+import { EditLocationComponent } from './components/edit-location/edit-location.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddLocationComponent } from './components/add-location/add-location.com
     NaConvertPipe,
     PricePipe,
     AddLocationComponent,
+    EditLocationComponent,
   ],
   imports: [
     CommonModule,

@@ -56,3 +56,15 @@ export class UploadLocationModel {
     public type: string
   ) {}
 }
+
+export class UploadEditLocationModel {
+  constructor(
+    public id: string,
+    public name: string,
+    public xCoordinate: string,
+    public yCoordinate: string,
+    public city: string,
+    public phoneNumber: string,
+    public type: string
+  ) {}
+}

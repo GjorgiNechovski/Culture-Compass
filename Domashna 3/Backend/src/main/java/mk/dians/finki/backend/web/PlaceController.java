@@ -3,6 +3,7 @@ package mk.dians.finki.backend.web;
 import mk.dians.finki.backend.model.Place;
 import mk.dians.finki.backend.model.User;
 import mk.dians.finki.backend.model.enums.UserRole;
+import mk.dians.finki.backend.model.exceptions.PlaceNotExistent;
 import mk.dians.finki.backend.service.PlaceService;
 import mk.dians.finki.backend.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -64,6 +65,28 @@ public class PlaceController {
         try {
             savedPlace = placeService.savePlace(name, xCoordinate, yCoordinate, city, imageUrl, phoneNumber, type, hasEntranceFee);
         } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return new ResponseEntity<>(savedPlace, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/{id}/editLocation", consumes = "multipart/form-data")
+    public ResponseEntity<Place> editPlace(
+            @PathVariable Long id,
+            @RequestParam String name,
+            @RequestParam double xCoordinate,
+            @RequestParam double yCoordinate,
+            @RequestParam String city,
+            @RequestParam(required = false) String phoneNumber,
+            @RequestParam String type,
+            @RequestParam (required = false) boolean hasEntranceFee) {
+
+        Place savedPlace = null;
+
+        try {
+            savedPlace = placeService.editPlace(id, name, xCoordinate, yCoordinate, city, phoneNumber, type, hasEntranceFee);
+        } catch (PlaceNotExistent e) {
             System.out.println(e.getMessage());
         }
 

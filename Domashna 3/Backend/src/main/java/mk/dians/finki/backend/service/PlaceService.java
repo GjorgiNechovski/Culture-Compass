@@ -18,5 +18,6 @@ public interface PlaceService {
     void deleteById(Long id);
 
     Place savePlace(String name, double xCoordinate, double yCoordinate, String city, MultipartFile imageUrl, String phoneNumber, String type, boolean hasEntranceFee) throws IOException;
+    Place editPlace(Long id, String name, double xCoordinate, double yCoordinate, String city, String phoneNumber, String type, boolean hasEntranceFee);
 }
 

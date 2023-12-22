@@ -6,6 +6,7 @@ import { UploadNewReview } from '../../models/review.models';
 import { ReviewService } from '../../services/review.service';
 import { AuthenticationService } from 'src/libs/authentication/services/authentication.service';
 import { MapService } from '../../services/map.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-location-details',
@@ -26,8 +27,9 @@ export class LocationDetailsComponent {
   constructor(
     private placesFacade: PlacesFacade,
     private reviewService: ReviewService,
-    private authService: AuthenticationService,
-    private loctionService: MapService
+    public authService: AuthenticationService,
+    private locationService: MapService,
+    private router: Router
   ) {}
 
   selectedView: string = 'general';
@@ -57,9 +59,10 @@ export class LocationDetailsComponent {
   }
 
   delete() {
-    this.loctionService
+    this.locationService
       .deleteLocation(this.authService.user?.id!, this.place.id)
       .subscribe(() => window.location.reload());
+    this.placesFacade.fetchPlaces();
   }
 
   showButtons(): void {
@@ -102,5 +105,15 @@ export class LocationDetailsComponent {
 
   cancelAddReview() {
     this.addingReview = false;
+  }
+
+  edit(): void {
+    this.cancelModal.emit();
+    this.router.navigate([`/editPlace/${this.place.id}`]);
+  }
+
+  login(): void {
+    this.cancelModal.emit();
+    this.router.navigate(['/login']);
   }
 }

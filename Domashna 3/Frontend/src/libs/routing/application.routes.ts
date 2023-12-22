@@ -4,6 +4,7 @@ import { LocationsListComponent } from '../maps/components/locations-list/locati
 import { AddLocationComponent } from '../maps/components/add-location/add-location.component';
 import { LogInComponent } from '../authentication/components/log-in/log-in.component';
 import { RegisterComponent } from '../authentication/components/register/register.component';
+import { EditLocationComponent } from '../maps/components/edit-location/edit-location.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'addPlace',
     component: AddLocationComponent,
+  },
+  {
+    path: 'editPlace/:id',
+    component: EditLocationComponent,
   },
   {
     path: '**',
