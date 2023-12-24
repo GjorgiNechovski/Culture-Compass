@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import MapComponent from './components/map/map.component';
-import {
-  GoogleMap,
-  GoogleMapsModule,
-  MapDirectionsRenderer,
-} from '@angular/google-maps';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { LocationDetailsComponent } from './components/location-details/location-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +16,7 @@ import { NaConvertPipe } from './pipes/na-convert.pipe';
 import { PricePipe } from './pipes/price.pipe';
 import { AddLocationComponent } from './components/add-location/add-location.component';
 import { EditLocationComponent } from './components/edit-location/edit-location.component';
+import { provideHttpClient, withJsonpSupport } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,5 +39,6 @@ import { EditLocationComponent } from './components/edit-location/edit-location.
     EffectsModule.forFeature([MapEffects]),
   ],
   exports: [MapComponent, LocationDetailsComponent, LocationsListComponent],
+  providers: [provideHttpClient(withJsonpSupport())],
 })
 export class MapsModule {}
