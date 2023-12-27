@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  angular:
+    build:
+      context: ./Frontend
+      dockerfile: ../Dockerfile.angular
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-custom.conf:/etc/nginx/conf.d/nginx-custom.conf:ro
+
+  spring:
+    build:
+      context: ./Backend
+      dockerfile: ../Dockerfile.spring
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/dians
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root123
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: dians
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root123
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data.csv:/docker-entrypoint-initdb.d/data.csv
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
