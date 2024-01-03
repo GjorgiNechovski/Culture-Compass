@@ -1,7 +1,6 @@
 package mk.dians.finki.backend.service.impl;
 
 import mk.dians.finki.backend.model.User;
-import mk.dians.finki.backend.model.exceptions.PasswordsNotMatching;
 import mk.dians.finki.backend.model.exceptions.UserNameExists;
 import mk.dians.finki.backend.model.exceptions.WrongCredentials;
 import mk.dians.finki.backend.repository.UserRepository;

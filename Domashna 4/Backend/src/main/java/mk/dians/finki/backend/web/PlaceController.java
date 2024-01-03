@@ -27,7 +27,7 @@ public class PlaceController {
     }
 
     @GetMapping
-    public List<Place> getAllPlaces(
+    public List<Place> getPlaces(
             @RequestParam(name = "type", required = false) String type,
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "fee", required = false) boolean fee,

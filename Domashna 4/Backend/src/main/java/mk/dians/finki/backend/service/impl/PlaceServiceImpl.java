@@ -5,6 +5,8 @@ import mk.dians.finki.backend.model.exceptions.PlaceNotExistent;
 import mk.dians.finki.backend.repository.PlaceRepository;
 import mk.dians.finki.backend.service.ImageService;
 import mk.dians.finki.backend.service.PlaceService;
+import mk.dians.finki.backend.service.helper.PlaceSpecifications;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,54 +26,23 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    //TODO: zameni go so shablon
     public List<Place> getPlaces(String type, String search, boolean fee, String city) {
-        if (type != null && search != null && fee && city != null) {
-            return placeRepository.findByCityAndNameContainingIgnoreCaseAndTypeEqualsAndHasEntranceFee(city, search, type, true);
-        }
-        if (type != null && search != null && fee) {
-            return placeRepository.findByNameContainingIgnoreCaseAndTypeEqualsAndHasEntranceFee(search, type, true);
-        }
-        if (type != null && search != null && city != null) {
-            return placeRepository.findByCityAndNameContainingAndType(city, search, type);
-        }
-        if (type != null && fee && city != null) {
-            return placeRepository.findByCityAndTypeAndHasEntranceFee(city, type, true);
-        }
-        if (search != null && fee && city != null) {
-            return placeRepository.findByCityAndNameContainingIgnoreCaseAndHasEntranceFee(city, search, true);
-        }
-        if (type != null && city != null) {
-            return placeRepository.findByCityAndType(city, type);
-        }
-        if (search != null && city != null) {
-            return placeRepository.findByCityAndNameContainingIgnoreCase(city, search);
-        }
-        if (fee && city != null) {
-            return placeRepository.findByCityAndHasEntranceFee(city, true);
-        }
-        if (type != null && fee) {
-            return placeRepository.findByTypeAndHasEntranceFee(type, true);
-        }
-        if (search != null && fee) {
-            return placeRepository.findByNameContainingIgnoreCaseAndHasEntranceFee(search, true);
-        }
-        if (type != null && search != null) {
-            return placeRepository.findByNameContainingIgnoreCaseAndTypeEquals(search, type);
-        }
+        Specification<Place> spec = Specification.where(null);
+
         if (type != null) {
-            return placeRepository.findByType(type);
+            spec = spec.and(PlaceSpecifications.withType(type));
         }
         if (search != null) {
-            return placeRepository.findByNameContainingIgnoreCase(search);
+            spec = spec.and(PlaceSpecifications.withName(search));
         }
         if (fee) {
-            return placeRepository.findByHasEntranceFee(true);
+            spec = spec.and(PlaceSpecifications.withEntranceFee(true));
         }
         if (city != null) {
-            return placeRepository.findByCity(city);
+            spec = spec.and(PlaceSpecifications.withCity(city));
         }
-        return placeRepository.findAll();
+
+        return placeRepository.findAll(spec);
     }
 
 
