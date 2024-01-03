@@ -52,7 +52,6 @@ export class AddLocationComponent implements OnInit {
       type
     );
 
-    //TODO: Change it with shablon later on
     this.mapService.uploadLocation(uploadLocation).subscribe(() => {
       this.mapFacade.fetchPlaces();
       this.router.navigate(['map']);

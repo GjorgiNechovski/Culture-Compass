@@ -70,7 +70,6 @@ export class EditLocationComponent implements OnInit {
       type
     );
 
-    //TODO: Change it with shablon later on
     this.mapService.editLocation(uploadLocation).subscribe(() => {
       this.mapFacade.fetchPlaces();
       this.router.navigate(['map']);

@@ -91,3 +91,7 @@ body > app-root > app-locations-list > div > form > div.text-center > span > div
 /*.rating:hover .star {*/
 /*  color: #f7d000;*/
 /*}*/
+
+.margin-5{
+  margin-top: 5em;
+}

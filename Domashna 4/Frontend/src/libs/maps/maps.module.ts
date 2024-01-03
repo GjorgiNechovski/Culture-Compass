@@ -17,6 +17,7 @@ import { PricePipe } from './pipes/price.pipe';
 import { AddLocationComponent } from './components/add-location/add-location.component';
 import { EditLocationComponent } from './components/edit-location/edit-location.component';
 import { provideHttpClient, withJsonpSupport } from '@angular/common/http';
+import { FilterComponentComponent } from './components/filter-component/filter-component.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { provideHttpClient, withJsonpSupport } from '@angular/common/http';
     PricePipe,
     AddLocationComponent,
     EditLocationComponent,
+    FilterComponentComponent,
   ],
   imports: [
     CommonModule,
