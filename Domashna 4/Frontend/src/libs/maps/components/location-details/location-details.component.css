@@ -115,11 +115,12 @@
 
 .image-container {
   position: relative;
-  display: inline-block;
+  display: flex;
 }
 
 .image {
   transition: filter 0.5s ease;
+  display: flex;
 }
 
 .buttons {

@@ -45,4 +45,8 @@ export class LogInComponent implements AfterViewInit {
   goToRegistration(): void {
     this.router.navigateByUrl('/register');
   }
+
+  goToMap() {
+    this.router.navigate(['/map']);
+  }
 }

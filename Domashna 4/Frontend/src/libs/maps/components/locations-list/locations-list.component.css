@@ -25,7 +25,8 @@ body > app-root > app-locations-list > div > div > form > div.text-center > span
 }
 
 .arrow{
-  margin: 10px;
+  margin: 25px;
+  display: inline-block;
   background: url("../../../../assets/arrow.png") no-repeat;
   background-size: 25px;
   width: 25px;

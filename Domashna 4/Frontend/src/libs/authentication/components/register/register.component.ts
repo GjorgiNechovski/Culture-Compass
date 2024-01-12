@@ -40,4 +40,8 @@ export class RegisterComponent {
   goToLogin(): void {
     this.router.navigateByUrl('/login');
   }
+
+  goToMap() {
+    this.router.navigate(['/map']);
+  }
 }
