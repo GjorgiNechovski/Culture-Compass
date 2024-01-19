@@ -1,40 +1,12 @@
-body {
+*{
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: url("../../../../assets/map-background.jpg") no-repeat fixed center;
-  background-size: cover;
-}
-
-div[class="register-container"]{
-  box-shadow: 1px 6px 9px 3px #14235F;
-}
-
-.register-container {
-  position: relative;
-  width: 45%;
-  height: 955px;
-  background: #000000;
-  margin: 0 auto;
-  font-family: "Arial", 'Montserrat', sans-serif;
-  color: white;
-  padding-bottom: 10%;
-  border-radius: 20px;
-  /*min-width: 70px;*/
-  text-align: center;
-}
-
-.align-text-center{
-  text-align: center;
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-  justify-self: center;
 }
 
 .arrow{
-  margin: 25px;
-  display: inline-block;
-  float: left;
+  margin: 25px 5px;
   background: url("../../../../assets/arrow.png") no-repeat;
   background-size: 25px;
   width: 25px;
@@ -46,253 +18,61 @@ div[class="register-container"]{
   opacity: 0.5;
 }
 
-.login-message {
-    position: absolute;
-    width: 228px;
-    height: 20px;
-    left: calc(50% - 228px/2);
-    top: 862px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 400;
+.welcome-wrapper {
+  margin: 3rem 0;
+}
+
+.registration-message {
     font-size: 16px;
     line-height: 20px;
     color: #787878;
 }
 
-.create-account {
-    position: absolute;
-    width: 165px;
-    height: 22px;
-    left: calc(50% - 165px/2 - 1px);
-    top: 238px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    color: #9D9D9D;
-}
-
-.group-99 {
-    position: relative;
-    width: 350px;
-    height: 58px;
-    left: -10px;
-    top: 668px;
-  display: flex;
-  justify-self: center;
-  justify-content: center;
-  justify-items: center;
-}
-
-
 .rectangle-31 {
-    position: relative;
-    width: 350px;
-    height: 58px;
-    left: calc(50% - 350px/2);
     background: #CC913E;
     border-radius: 30px;
 }
 
-.register {
-    position: relative;
-    width: 160px;
-    height: 24px;
-    left: 95px;
-    top: 17px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+.forgot-password {
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration-line: underline;
+    color: #CC913E;
+}
+
+.login {
     font-weight: 500;
     font-size: 20px;
-    line-height: 24px;
-    text-align: center;
     color: #000000;
-}
-
-.rectangle-28 {
-    position: absolute;
-    width: 350px;
-    height: 58px;
-    left: calc(50% - 350px/2);
-    top: -250px;
-    background: #2C2E2F;
-    border-radius: 10px;
-}
-
-.rectangle-29 {
-    position: absolute;
-    width: 350px;
-    height: 58px;
-    left: calc(50% - 350px/2);
-    top: -167px;
-    background: #2C2E2F;
-    border-radius: 10px;
-}
-
-.rectangle-29::after {
-    content: "";
-    background: url("../../../../assets/visible.png") no-repeat;
-    background-size: 30px;
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 20px;
-    top: 33%;
-}
-
-.email {
-    position: absolute;
-    width: 125px;
-    height: 20px;
-    left: 60px;
-    top: -230px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: #9D9D9D;
-}
-
-.email::before {
-    content: "";
-    background: url("../../../../assets/mail.png") no-repeat;
-    background-size: 23px;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    left: -40px;
-}
-
-.password {
-    position: absolute;
-    width: 70px;
-    height: 27px;
-    left: 60px;
-    top: -147px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
-    color: #9D9D9D;
-}
-
-.rectangle-29::before {
-    content: "";
-    background: url("../../../../assets/lock.png") no-repeat;
-    background-size: 23px;
-    display: inline-block;
-    width: 23px;
-    height: 25px;
-    position: absolute;
-    left: 20px;
-    top: 25%;
-}
-
-.rectangle-32 {
-    position: absolute;
-    width: 350px;
-    height: 58px;
-    left: calc(50% - 335px/2);
-    top: 335px;
-    background: #2C2E2F;
-    border-radius: 10px;
-}
-
-.name {
-    display: flex;
-    justify-items: center;
-    justify-content: left;
-    justify-self: center;
-    position: relative;
-    width: 36px;
-    height: 20px;
-    left: -300px;
-    top: 354px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: #9D9D9D;
-}
-
-.name::before {
-    content: "";
-    background: url("../../../../assets/user icon.png") no-repeat;
-    background-size: 23px;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    left: -40px;
-    top: -2px;
-}
-
-.agree-message {
-    position: absolute;
-    width: 70px;
-    height: 27px;
-    left: 105px;
-    top: 590px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 22px;
-    line-height: 27px;
-    color: #9D9D9D;
-}
-
-.rectangle-29::before {
-    content: "";
-    background: url("../../../../assets/lock.png") no-repeat;
-    background-size: 23px;
-    display: inline-block;
-    width: 23px;
-    height: 25px;
-    position: absolute;
-    left: 20px;
-    top: 25%;
-}
-
-.agree-message::before {
-    content: "";
-    background: url("../../../../assets/lock.png") no-repeat;
-    background-size: 23px;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    left: -40px;
+    background-color: #CC913E;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 40px;
 }
 
 .welcome-message {
-    position: absolute;
-    width: 236px;
-    height: 34px;
-    left: calc(50% - 236px/2 - 1px);
-    top: 191px;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
     font-weight: 600;
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 28px;
     text-align: center;
     color: #CC913E;
 }
 
-p{
-    display: inline;
-    color: #CC913E;
-    text-decoration: underline;
+.login-message {
+    font-size: 18px;
+    color: #9D9D9D;
 }
-input {
-    outline: none;
-    border: none;
+
+.input-wrapper {
+    margin: 2rem 0;
+}
+
+.input-field {
+  background-color: #2C2E2F;
+  position: relative;
+  font-weight: 300;
+  font-size: 16px;
+  color: #9D9D9D;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
 }

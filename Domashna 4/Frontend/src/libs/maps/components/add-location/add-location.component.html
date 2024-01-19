@@ -1,7 +1,7 @@
-<body>
-<div class="container">
-  <div class="arrow" (click)="goToMap()"></div>
-  <form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()" class="inside">
+<div style="background-color: #000; padding: 3rem 0;">
+<form [formGroup]="addPlaceForm" (ngSubmit)="onSubmit()">
+    <div style="display: grid; justify-content: center;">
+      <div class="arrow" (click)="goToMap()"></div>
     <div class="mb-3">
       <label for="name" class="form-label">Име:</label>
       <input type="text" class="form-control" id="name" formControlName="name" required>
@@ -46,12 +46,13 @@
     </div>
 
     <div class="mb-3 d-flex justify-content-center">
-      <button type="button" class="btn btn-outline-primary btn-lg" (click)="uploadImage()">Прикачи слика од локацијата</button>
+      <button type="button" class="btn btn-secondary btn-lg secondary-button" (click)="uploadImage()">Прикачи слика од локацијата</button>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary primary-button">Додади локација</button>
+    </div>
+  </div>
+</form>
 </div>
-
-</body>
 

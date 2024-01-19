@@ -1,6 +1,6 @@
 .modal-content{
-    background-color: #1D1D1D !important;
-    color: #FFF !important;
+    background-color: transparent;
+    border: none;
 }
 
 .my-google-map {
@@ -9,10 +9,10 @@
 
 
 .floating-button {
-  position: absolute;
+  /* position: absolute;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -37,8 +37,8 @@
 }
 
 .float-right{
-  position: fixed;
-  top: 15px;
+  /* position: fixed;
+  top: 15px; */
   padding: 10px;
   border-radius: 15px;
   font-size: 14px;
@@ -49,9 +49,9 @@
 }
 
 .float-right-logout{
-  position: fixed;
+  /* position: fixed;
   top: 15px;
-  right: 20px;
+  right: 20px; */
   padding: 10px;
   border-radius: 15px;
   font-size: 14px;
@@ -62,9 +62,9 @@
 }
 
 .float-left{
-  position: fixed;
+  /* position: fixed;
   top: 15px;
-  left: 220px;
+  left: 220px; */
   padding: 10px;
   border-radius: 15px;
   font-size: 14px;
@@ -75,9 +75,9 @@
 }
 
 .float-left-login{
-  position: fixed;
+  /* position: fixed;
   top: 15px;
-  left: 20px;
+  left: 20px; */
   padding: 10px;
   border-radius: 15px;
   font-size: 14px;
@@ -88,9 +88,9 @@
 }
 
 .open{
-  position: absolute;
+  /* position: absolute;
   top: 25px;
-  left: 75%;
+  left: 75%; */
   padding: 10px;
 }
 
