@@ -13,6 +13,7 @@ export class RegisterComponent {
     name: new FormControl(),
     email: new FormControl(),
     password: new FormControl(),
+    confirmPassword: new FormControl()
   });
 
   error: string | null = null;
@@ -26,25 +27,30 @@ export class RegisterComponent {
     const email = this.registerForm.controls['email'].value;
     const password = this.registerForm.controls['password'].value;
     const name = this.registerForm.controls['name'].value;
+    const confirmPassword = this.registerForm.controls['confirmPassword'].value;
 
     if (
-      email !== null &&
-      email !== '' &&
-      password !== null &&
-      password !== null &&
-      name !== null &&
-      name !== null
+      email == null ||
+      email == '' ||
+      password == null ||
+      password == null ||
+      name == null ||
+      name == null ||
+      confirmPassword == null ||
+      confirmPassword == null
     ) {
-      this.authService.register(name, email, password).subscribe(
-        () => {
-          this.router.navigateByUrl('/login');
-        },
-        (error) => {
-          this.error = error.error;
-        }
-      );
-    } else {
       this.error = 'Пополнете ги полињата!';
+    } else if(confirmPassword != password) {
+      this.error = 'Лозинките не се совпаѓаат!';
+    } else {
+      this.authService.register(name, email, password).subscribe(
+              () => {
+                this.router.navigateByUrl('/login');
+              },
+              (error) => {
+                this.error = error.error;
+              }
+            );
     }
   }
 

@@ -1,34 +1,24 @@
-<div style="background-color: #000; height: 100vh;">
+<div class="map">
 <form [formGroup]="loginForm">
-  <div style="padding: 3rem 0; display: grid; justify-content: center;">
-  <div class="arrow" (click)="goToMap()"></div>
-    <div class="text-center my-5 px-2">
-      <div class="welcome-wrapper">
-        <div class="welcome-message">Добредојдовте назад!</div>
-        <div class="login-message">Најавете се на вашата сметка
+  <div #loginContainer class="login-container">
+    <div class="arrow" (click)="goToMap()"></div>
+      <div class="registration-message">Немате сметка?
+          <p (click)="goToRegistration()">Регистрирајте се.</p></div>
+      <div class="rectangle-31"></div>
+      <div class="forgot-password">Заборавена лозинка?</div>
+      <div class="login" (click)="login()">Најави се</div>
+      <div class="welcome-message">Добредојдовте назад!</div>
+      <div class="login-message">Најавете се на вашата сметка
           <h3 class="bg-danger mt-3" *ngIf="error">{{error}}</h3>
-        </div>
       </div>
-
-      <div class="input-wrapper">
-        <input formControlName="email" class="input-field" type="text" required>
+      <div class="rectangle-28"></div>
+      <div class="rectangle-29"></div>
+      <div class="email">
+          <input formControlName="email" style="background-color: #2C2E2F; width: 250px;" type="text" required>
       </div>
-
-      <div class="input-wrapper">
-        <input formControlName="password" class="input-field" type="password" required>
+      <div class="password">
+          <input formControlName="password" style="background-color: #2C2E2F; width: 230px;" type="password" required>
       </div>
-
-      <div class="forgot-password my-2">Заборавена лозинка?</div>
-
-      <div class="my-5">
-        <button type="submit" class="login" (click)="login()">Најави се</button>
-      </div>
-
-      <div class="registration-message my-5">Немате сметка?
-        <span style="font-weight: 500; color: #CC913E; text-decoration: underline;" (click)="goToRegistration()">Регистрирајте се.</span>
-      </div>
-
-    </div>
   </div>
 </form>
 </div>

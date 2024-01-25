@@ -1,5 +1,5 @@
-<div class="container text-center pb-3">
-  <h4 class="mt-3" id="title">{{ place.name }}</h4>
+<div class="container text-center pb-3" style="background-color: #000; border-radius: 15px;">
+  <h4 class="mt-3" id="title" style="color: #fff;">{{ place.name }}</h4>
   <div class="pics">
     <div (mouseover)="showButtons()" (mouseleave)="hideButtons()" class="image-container">
         <img src="{{place.imageUrl ? place.imageUrl : 'assets/placeholder.png'}}" alt="Example Image" class="mx-auto d-block img-fluid" id="myImage"
@@ -34,7 +34,7 @@
         <button type="button" class="warning primary-button" (click)="addDestination(place)">Додади како дестинациска локација</button>
       </div>
 
-      <div class="details">
+      <div class="details" style="color: #fff;">
         <p><i class="fa fa-calendar" aria-hidden="true"></i>
           Отвара: {{ place.openingHours | naConvert }}</p>
         <p><i class="fa fa-phone" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
       <ng-container *ngIf="!addingReview; else addReviewForm">
         <button *ngIf="authService.user !== null" type="button" class="warning primary-button" (click)="toggleAddReview()">Постави преглед</button>
         <div *ngIf="authService.user === null" class="my-4">
-          <p style="font-size: 14px;">Треба да бидете најавени за да оставите преглед.</p>
+          <p style="font-size: 14px; color:#fff;">Треба да бидете најавени за да оставите преглед.</p>
            <button  type="button" class="warning primary-button" (click)="login()">Најавете се</button>
         </div>
       </ng-container>

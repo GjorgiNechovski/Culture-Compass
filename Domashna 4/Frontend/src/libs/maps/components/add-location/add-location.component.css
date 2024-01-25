@@ -1,16 +1,49 @@
-*{
-  font-family: 'Montserrat', sans-serif;
-  box-sizing: border-box;
+body {
   margin: 0;
+  padding: 0;
+  background: url("../../../../assets/map-background.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
+.container {
+  position: relative;
+  width: 40%;
+  background: #000000;
+  margin: 0 auto;
+  font-family: "Arial", 'Montserrat', sans-serif;
+  color: white;
+  padding-bottom: 50px;
+  border-radius: 20px;
+  box-shadow: 1px 6px 9px 3px #14235F;
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 80%;
+  }
 }
 
 .arrow{
-  margin: 25px 5px;
+  display: inline-block;
+  position: absolute;
   background: url("../../../../assets/arrow.png") no-repeat;
   background-size: 25px;
   width: 25px;
   height: 25px;
   cursor: pointer;
+  margin: 25px;
 }
 
 .arrow:hover{
@@ -22,26 +55,10 @@
 }
 
 label{
-  font-weight: 500;
-  color: #fff;
-  font-size: 14px;
+  font-weight: bold;
 }
 
-.primary-button {
-  font-weight: 500;
-  font-size: 16px;
-  color: #000000;
-  background-color: #CC913E;
-  border-radius: 30px;
-  border: none;
-  padding: 10px 60px;
-}
-
-.secondary-button {
-  font-weight: 500;
-  font-size: 14px;
-  color: #CC913E;
-  background-color: transparent;
-  border-radius: 30px;
-  border: 1px solid #CC913E;
+.inside{
+  margin: 0 60px 0 60px;
+  padding-top: 60px;
 }
