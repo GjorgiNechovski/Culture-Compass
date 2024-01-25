@@ -32,14 +32,23 @@ export class LogInComponent implements AfterViewInit {
     const email = this.loginForm.controls['email'].value;
     const password = this.loginForm.controls['password'].value;
 
-    this.authService.logIn(email, password).subscribe(
-      (x) => {
-        this.router.navigateByUrl('/map');
-      },
-      (error) => {
-        this.error = error.error;
-      }
-    );
+    if (
+      email !== null &&
+      email !== '' &&
+      password !== null &&
+      password !== null
+    ) {
+      this.authService.logIn(email, password).subscribe(
+        (x) => {
+          this.router.navigateByUrl('/map');
+        },
+        (error) => {
+          this.error = error.error;
+        }
+      );
+    } else {
+      this.error = 'Пополнете ги полињата!';
+    }
   }
 
   goToRegistration(): void {

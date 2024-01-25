@@ -46,11 +46,10 @@ public class ReviewController {
         return new ResponseEntity<>(savedReview, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/place/{placeId}/review/{reviewId}")
+    @DeleteMapping("/delete/{reviewId}")
     public ResponseEntity<Void> deleteReview(
-            @PathVariable Long placeId,
             @PathVariable Long reviewId) {
-        reviewService.deleteReview(placeId, reviewId);
+        reviewService.deleteReview(reviewId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

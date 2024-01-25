@@ -8,6 +8,8 @@ import { EditLocationComponent } from '../maps/components/edit-location/edit-loc
 import { Component404 } from './components/404/404.component';
 import { Component403 } from './components/403/403.component';
 import { AdminGuard } from '../authentication/services/admin.guard.service';
+import { Component401 } from './components/401/401.component';
+import { AuthenticationGuard } from '../authentication/services/authentication.guard.service';
 
 export const routes: Routes = [
   {
@@ -33,6 +35,7 @@ export const routes: Routes = [
   },
   {
     path: 'addPlace',
+    canActivate: [AuthenticationGuard],
     component: AddLocationComponent,
   },
   {
@@ -47,6 +50,10 @@ export const routes: Routes = [
   {
     path: '403',
     component: Component403,
+  },
+  {
+    path: '401',
+    component: Component401,
   },
   {
     path: '**',

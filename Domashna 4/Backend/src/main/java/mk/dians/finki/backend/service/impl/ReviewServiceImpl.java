@@ -47,7 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.save(review);
     }
 
-    public void deleteReview(Long placeId, Long reviewId) {
-        reviewRepository.deleteByPlaceIdAndId(placeId, reviewId);
+    public void deleteReview(Long reviewId) {
+        reviewRepository.delete(reviewRepository.findById(reviewId).get());
     }
 }

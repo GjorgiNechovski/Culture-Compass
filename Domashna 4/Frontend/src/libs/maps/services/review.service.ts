@@ -34,9 +34,7 @@ export class ReviewService {
     });
   }
 
-  deleteReview(placeId: string, reviewId: string): Observable<void> {
-    return this.http.delete<void>(
-      appApi + `/reviews/place/${placeId}/review/${reviewId}`
-    );
+  deleteReview(reviewId: number): Observable<void> {
+    return this.http.delete<void>(appApi + `/reviews/delete/${reviewId}`);
   }
 }

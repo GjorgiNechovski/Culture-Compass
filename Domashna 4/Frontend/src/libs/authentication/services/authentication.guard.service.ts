@@ -10,11 +10,8 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class AdminGuard {
-  constructor(
-    private authService: AuthenticationService,
-    private router: Router
-  ) {}
+export class AuthenticationGuard {
+  constructor(private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,7 +19,7 @@ export class AdminGuard {
   ): boolean | UrlTree {
     const isLogged = this.getCookie('token');
 
-    if (isLogged && this.authService.user?.role === 'ADMIN') {
+    if (isLogged) {
       return true;
     } else {
       return this.router.parseUrl('/403');

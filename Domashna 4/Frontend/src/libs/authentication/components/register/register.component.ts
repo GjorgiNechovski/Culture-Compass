@@ -27,14 +27,25 @@ export class RegisterComponent {
     const password = this.registerForm.controls['password'].value;
     const name = this.registerForm.controls['name'].value;
 
-    this.authService.register(name, email, password).subscribe(
-      () => {
-        this.router.navigateByUrl('/login');
-      },
-      (error) => {
-        this.error = error.error;
-      }
-    );
+    if (
+      email !== null &&
+      email !== '' &&
+      password !== null &&
+      password !== null &&
+      name !== null &&
+      name !== null
+    ) {
+      this.authService.register(name, email, password).subscribe(
+        () => {
+          this.router.navigateByUrl('/login');
+        },
+        (error) => {
+          this.error = error.error;
+        }
+      );
+    } else {
+      this.error = 'Пополнете ги полињата!';
+    }
   }
 
   goToLogin(): void {

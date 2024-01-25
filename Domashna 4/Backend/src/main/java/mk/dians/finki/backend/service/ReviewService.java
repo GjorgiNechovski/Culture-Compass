@@ -11,7 +11,7 @@ public interface ReviewService {
 
     Optional<Review> getReviewByPlaceIdAndId(Long placeId, Long reviewId);
 
-    void deleteReview(Long placeId, Long reviewId);
+    void deleteReview(Long reviewId);
 
     Review saveReview(Long placeId, Long userId, Review review);
 }

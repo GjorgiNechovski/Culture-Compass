@@ -38,11 +38,12 @@ export class EditLocationComponent implements OnInit {
 
       const foundPlace = places.find((place) => place.id === id);
       this.mapService.getLocationById(id).subscribe();
+      this.place = foundPlace;
 
       this.editPlaceForm.patchValue({
         name: foundPlace!.name,
-        xCoordinate: foundPlace!.position.lat,
-        yCoordinate: foundPlace!.position.lng,
+        xCoordinate: foundPlace!.xcoordinate,
+        yCoordinate: foundPlace!.ycoordinate,
         city: foundPlace!.city,
         phoneNumber: foundPlace!.phoneNumber,
         type: foundPlace!.type,

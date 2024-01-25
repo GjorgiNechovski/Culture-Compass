@@ -18,6 +18,7 @@ export class LocationDetailsComponent {
   @Output() cancelModal = new EventEmitter<void>();
 
   addingReview: boolean = false;
+  error: string | null = null;
 
   newReviewForm: FormGroup = new FormGroup({
     comment: new FormControl(),
@@ -49,13 +50,28 @@ export class LocationDetailsComponent {
   submitReview() {
     const comment = this.newReviewForm.controls['comment'].value;
     const rating = this.newReviewForm.controls['rating'].value;
-    const id = this.place.id.toString();
 
-    const newReview = new UploadNewReview(comment, rating, id);
+    if (
+      comment !== null &&
+      comment !== '' &&
+      rating !== null &&
+      rating !== null
+    ) {
+      if (rating < 1 || rating > 10) {
+        this.error = 'Оцената мора да биде помеѓу 1 и 10!';
+      } else {
+        const id = this.place.id.toString();
 
-    this.reviewService.addReview(newReview).subscribe();
+        const newReview = new UploadNewReview(comment, rating, id);
 
-    this.addingReview = false;
+        this.reviewService.addReview(newReview).subscribe();
+        window.location.reload();
+
+        this.addingReview = false;
+      }
+    } else {
+      this.error = 'Ве молам пополнете ги сите полиња!';
+    }
   }
 
   delete() {
@@ -63,6 +79,12 @@ export class LocationDetailsComponent {
       .deleteLocation(this.authService.user?.id!, this.place.id)
       .subscribe(() => window.location.reload());
     this.placesFacade.fetchPlaces();
+  }
+
+  deleteReview(id: number) {
+    this.reviewService
+      .deleteReview(id)
+      .subscribe(() => window.location.reload());
   }
 
   showButtons(): void {
