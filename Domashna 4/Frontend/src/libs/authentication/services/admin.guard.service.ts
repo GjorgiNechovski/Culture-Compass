@@ -25,7 +25,7 @@ export class AdminGuard {
     if (isLogged && this.authService.user?.role === 'ADMIN') {
       return true;
     } else {
-      return this.router.parseUrl('/401');
+      return this.router.parseUrl('/403');
     }
   }
 

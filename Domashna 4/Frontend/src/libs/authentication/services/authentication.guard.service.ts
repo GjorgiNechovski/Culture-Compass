@@ -22,7 +22,7 @@ export class AuthenticationGuard {
     if (isLogged) {
       return true;
     } else {
-      return this.router.parseUrl('/403');
+      return this.router.parseUrl('/401');
     }
   }
 
