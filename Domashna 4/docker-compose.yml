@@ -10,19 +10,42 @@ services:
     volumes:
       - ./nginx-custom.conf:/etc/nginx/conf.d/nginx-custom.conf:ro
 
-  spring:
+  places:
     build:
-      context: ./Backend
-      dockerfile: ../Dockerfile.spring
+      context: ./Backend/Places
+      dockerfile: Dockerfile.places
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       - postgres
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/dians
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: root123
-
+  reviews:
+    build:
+      context: ./Backend/Review
+      dockerfile: Dockerfile.reviews
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/dians
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root123
+  user:
+    build:
+      context: ./Backend/Users
+      dockerfile: Dockerfile.users
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/dians
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root123
   postgres:
     image: postgres:latest
     environment:
