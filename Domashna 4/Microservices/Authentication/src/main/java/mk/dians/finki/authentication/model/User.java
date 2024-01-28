@@ -1,9 +1,9 @@
-package mk.dians.finki.places.model;
+package mk.dians.finki.authentication.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.dians.finki.places.model.enums.UserRole;
+import mk.dians.finki.authentication.model.enums.UserRole;
 
 import java.io.Serial;
 import java.io.Serializable;

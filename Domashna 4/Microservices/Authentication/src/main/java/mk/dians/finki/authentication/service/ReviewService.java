@@ -1,7 +1,7 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.authentication.service;
 
 
-import mk.dians.finki.places.model.Review;
+import mk.dians.finki.authentication.model.Review;
 
 import java.util.List;
 import java.util.Optional;

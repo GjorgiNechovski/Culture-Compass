@@ -1,8 +1,8 @@
-package mk.dians.finki.places.service.impl;
+package mk.dians.finki.authentication.service.impl;
 
-import mk.dians.finki.places.model.User;
-import mk.dians.finki.places.repository.UserRepository;
-import mk.dians.finki.places.service.UserService;
+import mk.dians.finki.authentication.model.User;
+import mk.dians.finki.authentication.repository.UserRepository;
+import mk.dians.finki.authentication.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

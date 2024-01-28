@@ -1,6 +1,6 @@
-package mk.dians.finki.backend.service;
+package mk.dians.finki.places.service;
 
-import mk.dians.finki.backend.model.Place;
+import mk.dians.finki.places.model.Place;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -17,7 +17,7 @@ public interface PlaceService {
     List<String> getAllCities();
     void deleteById(Long id);
 
-    Place savePlace(String name, double xCoordinate, double yCoordinate, String city, MultipartFile imageUrl, String phoneNumber, String type, boolean hasEntranceFee) throws IOException;
+    Place savePlace(String name, double xCoordinate, double yCoordinate, String city, String imageUrl, String phoneNumber, String type, boolean hasEntranceFee) throws IOException;
     Place editPlace(Long id, String name, double xCoordinate, double yCoordinate, String city, String phoneNumber, String type, boolean hasEntranceFee);
 }
 

@@ -58,21 +58,6 @@ export class AddLocationComponent implements OnInit {
     });
   }
 
-  uploadImage(): void {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-
-    fileInput.addEventListener('change', (event) => {
-      const files = (event.target as HTMLInputElement).files;
-      if (files !== null) {
-        this.addPlaceForm.controls['imageUrl'].setValue(files[0]);
-      }
-    });
-
-    fileInput.click();
-  }
-
   goToMap() {
     this.router.navigate(['/map']);
   }

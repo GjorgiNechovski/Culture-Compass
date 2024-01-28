@@ -1,4 +1,4 @@
-package mk.dians.finki.places.config;
+package mk.dians.finki.authentication.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

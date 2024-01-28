@@ -1,10 +1,10 @@
-package mk.dians.finki.backend.web;
+package mk.dians.finki.authentication.web;
 
 import jakarta.servlet.http.HttpSession;
-import mk.dians.finki.backend.model.User;
-import mk.dians.finki.backend.model.exceptions.WrongCredentials;
-import mk.dians.finki.backend.service.AuthenticationService;
-import mk.dians.finki.backend.service.UserService;
+import mk.dians.finki.authentication.model.User;
+import mk.dians.finki.authentication.model.exceptions.WrongCredentials;
+import mk.dians.finki.authentication.service.AuthenticationService;
+import mk.dians.finki.authentication.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

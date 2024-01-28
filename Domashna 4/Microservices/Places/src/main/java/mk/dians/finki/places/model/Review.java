@@ -1,4 +1,4 @@
-package mk.dians.finki.backend.model;
+package mk.dians.finki.places.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

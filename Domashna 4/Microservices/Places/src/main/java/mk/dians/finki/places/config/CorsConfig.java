@@ -1,4 +1,4 @@
-package mk.dians.finki.backend.config;
+package mk.dians.finki.places.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

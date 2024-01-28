@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UploadNewReview } from '../models/review.models';
-import { appApi } from 'src/app/const-variables.models';
+import { reviewApi } from 'src/app/const-variables.models';
 import { AuthenticationService } from 'src/libs/authentication/services/authentication.service';
 
 @Injectable({
@@ -28,13 +28,17 @@ export class ReviewService {
 
     const headers = new HttpHeaders();
 
-    return this.http.post(`${appApi}/reviews/place/${review.placeId}`, data, {
-      headers,
-      params,
-    });
+    return this.http.post(
+      `${reviewApi}/reviews/place/${review.placeId}`,
+      data,
+      {
+        headers,
+        params,
+      }
+    );
   }
 
   deleteReview(reviewId: number): Observable<void> {
-    return this.http.delete<void>(appApi + `/reviews/delete/${reviewId}`);
+    return this.http.delete<void>(reviewApi + `/reviews/delete/${reviewId}`);
   }
 }

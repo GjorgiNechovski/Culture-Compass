@@ -48,7 +48,7 @@ export class UploadLocationModel {
     public xCoordinate: string,
     public yCoordinate: string,
     public city: string,
-    public imageUrl: File,
+    public imageUrl: string,
     public phoneNumber: string,
     public type: string
   ) {}

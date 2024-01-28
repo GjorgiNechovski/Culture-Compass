@@ -1,8 +1,6 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.review.service;
 
-
-import mk.dians.finki.places.model.Review;
-
+import mk.dians.finki.review.model.Review;
 import java.util.List;
 import java.util.Optional;
 

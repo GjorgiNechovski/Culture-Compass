@@ -1,4 +1,4 @@
-package mk.dians.finki.places.model.enums;
+package mk.dians.finki.review.model.enums;
 
 public enum UserRole {
     USER,

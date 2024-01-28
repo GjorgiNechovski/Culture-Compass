@@ -45,8 +45,9 @@
         <input type="number" class="form-control" id="phoneNumber" formControlName="phoneNumber" required min="0">
       </div>
 
-      <div class="mb-3 d-flex justify-content-center">
-        <button type="button" class="btn btn-outline-primary btn-lg" (click)="uploadImage()">Прикачи слика од локацијата</button>
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Google link од сликата која сакате да се прикажи:</label>
+        <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl">
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

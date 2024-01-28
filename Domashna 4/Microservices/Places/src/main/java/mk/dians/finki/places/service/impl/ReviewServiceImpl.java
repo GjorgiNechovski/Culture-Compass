@@ -1,12 +1,13 @@
-package mk.dians.finki.backend.service.impl;
+package mk.dians.finki.places.service.impl;
 
-import mk.dians.finki.backend.model.Place;
-import mk.dians.finki.backend.model.Review;
-import mk.dians.finki.backend.model.User;
-import mk.dians.finki.backend.repository.PlaceRepository;
-import mk.dians.finki.backend.repository.ReviewRepository;
-import mk.dians.finki.backend.repository.UserRepository;
-import mk.dians.finki.backend.service.ReviewService;
+
+import mk.dians.finki.places.model.Place;
+import mk.dians.finki.places.model.Review;
+import mk.dians.finki.places.model.User;
+import mk.dians.finki.places.repository.PlaceRepository;
+import mk.dians.finki.places.repository.ReviewRepository;
+import mk.dians.finki.places.repository.UserRepository;
+import mk.dians.finki.places.service.ReviewService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;

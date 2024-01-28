@@ -1,11 +1,11 @@
-package mk.dians.finki.places.service.impl;
+package mk.dians.finki.review.service.impl;
 
 
-import mk.dians.finki.places.model.User;
-import mk.dians.finki.places.model.exceptions.UserNameExists;
-import mk.dians.finki.places.model.exceptions.WrongCredentials;
-import mk.dians.finki.places.repository.UserRepository;
-import mk.dians.finki.places.service.AuthenticationService;
+import mk.dians.finki.review.model.User;
+import mk.dians.finki.review.model.exceptions.UserNameExists;
+import mk.dians.finki.review.model.exceptions.WrongCredentials;
+import mk.dians.finki.review.repository.UserRepository;
+import mk.dians.finki.review.service.AuthenticationService;
 import org.springframework.stereotype.Service;
 
 @Service

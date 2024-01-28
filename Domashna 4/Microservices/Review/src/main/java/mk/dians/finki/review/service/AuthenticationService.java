@@ -1,7 +1,7 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.review.service;
 
-import mk.dians.finki.places.model.User;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import mk.dians.finki.review.model.User;
 
 public interface AuthenticationService {
     void registerNewUser(String username, String email, String password);

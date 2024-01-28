@@ -1,15 +1,15 @@
-package mk.dians.finki.places.service.impl;
+package mk.dians.finki.review.service.impl;
 
-
-import mk.dians.finki.places.model.Place;
-import mk.dians.finki.places.model.Review;
-import mk.dians.finki.places.model.User;
-import mk.dians.finki.places.repository.PlaceRepository;
-import mk.dians.finki.places.repository.ReviewRepository;
-import mk.dians.finki.places.repository.UserRepository;
-import mk.dians.finki.places.service.ReviewService;
-import org.springframework.stereotype.Service;
+import mk.dians.finki.review.model.Place;
+import mk.dians.finki.review.model.Review;
+import mk.dians.finki.review.model.User;
+import mk.dians.finki.review.repository.PlaceRepository;
+import mk.dians.finki.review.repository.ReviewRepository;
+import mk.dians.finki.review.repository.UserRepository;
+import mk.dians.finki.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 

@@ -1,11 +1,11 @@
-package mk.dians.finki.places.service.impl;
+package mk.dians.finki.authentication.service.impl;
 
 
-import mk.dians.finki.places.model.Place;
-import mk.dians.finki.places.repository.PlaceRepository;
-import mk.dians.finki.places.service.PlaceService;
-import mk.dians.finki.places.service.helper.PlaceSpecifications;
-import mk.dians.finki.places.model.exceptions.PlaceNotExistent;
+import mk.dians.finki.authentication.model.Place;
+import mk.dians.finki.authentication.model.exceptions.PlaceNotExistent;
+import mk.dians.finki.authentication.repository.PlaceRepository;
+import mk.dians.finki.authentication.service.PlaceService;
+import mk.dians.finki.authentication.service.helper.PlaceSpecifications;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 

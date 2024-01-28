@@ -1,6 +1,6 @@
-package mk.dians.finki.places.service.helper;
+package mk.dians.finki.review.service.helper;
 
-import mk.dians.finki.places.model.Place;
+import mk.dians.finki.review.model.Place;
 import org.springframework.data.jpa.domain.Specification;
 
 public class PlaceSpecifications {

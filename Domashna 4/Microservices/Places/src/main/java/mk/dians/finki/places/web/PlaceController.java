@@ -1,15 +1,14 @@
-package mk.dians.finki.backend.web;
+package mk.dians.finki.places.web;
 
-import mk.dians.finki.backend.model.Place;
-import mk.dians.finki.backend.model.User;
-import mk.dians.finki.backend.model.enums.UserRole;
-import mk.dians.finki.backend.model.exceptions.PlaceNotExistent;
-import mk.dians.finki.backend.service.PlaceService;
-import mk.dians.finki.backend.service.UserService;
+import mk.dians.finki.places.model.Place;
+import mk.dians.finki.places.model.User;
+import mk.dians.finki.places.model.enums.UserRole;
+import mk.dians.finki.places.model.exceptions.PlaceNotExistent;
+import mk.dians.finki.places.service.PlaceService;
+import mk.dians.finki.places.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,7 +54,7 @@ public class PlaceController {
             @RequestParam double xCoordinate,
             @RequestParam double yCoordinate,
             @RequestParam String city,
-            @RequestParam(value = "image", required = false) MultipartFile imageUrl,
+            @RequestParam(value = "image", required = false) String imageUrl,
             @RequestParam(required = false) String phoneNumber,
             @RequestParam String type,
             @RequestParam (required = false) boolean hasEntranceFee) {

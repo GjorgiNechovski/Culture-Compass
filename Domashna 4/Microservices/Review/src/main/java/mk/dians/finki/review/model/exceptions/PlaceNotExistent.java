@@ -1,4 +1,4 @@
-package mk.dians.finki.places.model.exceptions;
+package mk.dians.finki.review.model.exceptions;
 
 public class PlaceNotExistent extends RuntimeException{
     public PlaceNotExistent() {

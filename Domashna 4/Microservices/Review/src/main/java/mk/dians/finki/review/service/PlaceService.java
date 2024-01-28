@@ -1,7 +1,7 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.review.service;
 
-import mk.dians.finki.places.model.Place;
-import org.springframework.web.multipart.MultipartFile;
+
+import mk.dians.finki.review.model.Place;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,8 +1,9 @@
-package mk.dians.finki.places.repository;
+package mk.dians.finki.review.repository;
 
+import mk.dians.finki.review.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import mk.dians.finki.places.model.Review;
+
 import java.util.List;
 import java.util.Optional;
 

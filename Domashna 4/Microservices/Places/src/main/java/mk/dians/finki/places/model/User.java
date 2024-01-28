@@ -1,13 +1,12 @@
-package mk.dians.finki.backend.model;
+package mk.dians.finki.places.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.dians.finki.backend.model.enums.UserRole;
+import mk.dians.finki.places.model.enums.UserRole;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity

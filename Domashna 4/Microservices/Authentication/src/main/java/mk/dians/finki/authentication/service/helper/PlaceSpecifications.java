@@ -1,6 +1,6 @@
-package mk.dians.finki.places.service.helper;
+package mk.dians.finki.authentication.service.helper;
 
-import mk.dians.finki.places.model.Place;
+import mk.dians.finki.authentication.model.Place;
 import org.springframework.data.jpa.domain.Specification;
 
 public class PlaceSpecifications {

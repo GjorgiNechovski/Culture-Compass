@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, filter, map } from 'rxjs';
-import { appApi } from 'src/app/const-variables.models';
+import { authApi } from 'src/app/const-variables.models';
 import { User } from '../models/user.models';
 import { CookieService } from './cookie.service';
 
@@ -25,7 +25,7 @@ export class AuthenticationService {
     headers.append('Content-Type', 'application/json');
 
     return this.httpClient
-      .post<User>(appApi + '/login', data, {
+      .post<User>(authApi + '/login', data, {
         headers,
       })
       .pipe(
@@ -55,7 +55,7 @@ export class AuthenticationService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
 
-    return this.httpClient.post<void>(appApi + '/register', data, {
+    return this.httpClient.post<void>(authApi + '/register', data, {
       headers,
     });
   }
@@ -65,7 +65,7 @@ export class AuthenticationService {
 
     if (id !== null) {
       this.httpClient
-        .get<User>(appApi + `/currentUser/${id}`)
+        .get<User>(authApi + `/currentUser/${id}`)
         .pipe(filter((x) => x !== null))
         .subscribe((x) => {
           this.user = x;

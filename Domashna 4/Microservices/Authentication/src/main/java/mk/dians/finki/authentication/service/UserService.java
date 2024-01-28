@@ -1,6 +1,7 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.authentication.service;
 
-import mk.dians.finki.places.model.User;
+import mk.dians.finki.authentication.model.User;
+
 import java.util.Optional;
 
 public interface UserService {

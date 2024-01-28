@@ -1,14 +1,13 @@
-package mk.dians.finki.backend.service.impl;
+package mk.dians.finki.places.service.impl;
 
-import mk.dians.finki.backend.model.Place;
-import mk.dians.finki.backend.model.exceptions.PlaceNotExistent;
-import mk.dians.finki.backend.repository.PlaceRepository;
-import mk.dians.finki.backend.service.ImageService;
-import mk.dians.finki.backend.service.PlaceService;
-import mk.dians.finki.backend.service.helper.PlaceSpecifications;
+
+import mk.dians.finki.places.model.Place;
+import mk.dians.finki.places.repository.PlaceRepository;
+import mk.dians.finki.places.service.PlaceService;
+import mk.dians.finki.places.service.helper.PlaceSpecifications;
+import mk.dians.finki.places.model.exceptions.PlaceNotExistent;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,11 +17,9 @@ import java.util.Optional;
 public class PlaceServiceImpl implements PlaceService {
 
     private final PlaceRepository placeRepository;
-    private final ImageService imageService;
 
-    public PlaceServiceImpl(PlaceRepository placeRepository, ImageService imageService) {
+    public PlaceServiceImpl(PlaceRepository placeRepository) {
         this.placeRepository = placeRepository;
-        this.imageService = imageService;
     }
 
     @Override
@@ -64,15 +61,14 @@ public class PlaceServiceImpl implements PlaceService {
     public Place savePlace(String name,
                            double xCoordinate, double yCoordinate,
                            String city,
-                           MultipartFile imageUrl,
+                           String imageUrl,
                            String phoneNumber,
                            String type,
                            boolean hasEntranceFee) throws IOException {
         Place place = new Place();
 
         if(imageUrl!=null) {
-            String image = this.imageService.uploadFile(imageUrl);
-            place.setImageUrl(image);
+            place.setImageUrl(imageUrl);
         }
         if (phoneNumber != null){
             place.setPhoneNumber(phoneNumber);
@@ -83,7 +79,6 @@ public class PlaceServiceImpl implements PlaceService {
         place.setYCoordinate(yCoordinate);
         place.setCity(city);
         place.setType(type);
-
 
         return placeRepository.save(place);
     }

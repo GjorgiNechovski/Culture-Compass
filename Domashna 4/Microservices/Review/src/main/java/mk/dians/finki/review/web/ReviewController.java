@@ -1,11 +1,11 @@
-package mk.dians.finki.backend.web;
+package mk.dians.finki.review.web;
 
-import mk.dians.finki.backend.model.Review;
-import mk.dians.finki.backend.service.ReviewService;
+import mk.dians.finki.review.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import mk.dians.finki.review.service.ReviewService;
 
 import java.util.List;
 import java.util.Optional;

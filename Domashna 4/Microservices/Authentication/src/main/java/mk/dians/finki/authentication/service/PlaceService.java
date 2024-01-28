@@ -1,7 +1,6 @@
-package mk.dians.finki.places.service;
+package mk.dians.finki.authentication.service;
 
-import mk.dians.finki.places.model.Place;
-import org.springframework.web.multipart.MultipartFile;
+import mk.dians.finki.authentication.model.Place;
 
 import java.io.IOException;
 import java.util.List;

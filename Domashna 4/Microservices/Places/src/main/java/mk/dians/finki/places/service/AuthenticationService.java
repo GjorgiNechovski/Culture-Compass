@@ -1,6 +1,6 @@
-package mk.dians.finki.backend.service;
+package mk.dians.finki.places.service;
 
-import mk.dians.finki.backend.model.User;
+import mk.dians.finki.places.model.User;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public interface AuthenticationService {

@@ -1,4 +1,4 @@
-package mk.dians.finki.places.model.exceptions;
+package mk.dians.finki.authentication.model.exceptions;
 
 public class PasswordsNotMatching extends RuntimeException{
     public PasswordsNotMatching() {

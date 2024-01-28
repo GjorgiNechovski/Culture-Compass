@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
-import { appApi } from '../../../app/const-variables.models';
+import { Observable, map } from 'rxjs';
+import { placesApi } from '../../../app/const-variables.models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   Place,
@@ -16,7 +16,7 @@ export class MapService {
 
   getLocations(filter: string | null): Observable<Place[]> {
     if (filter != null) {
-      return this.http.get<any[]>(appApi + '/places?' + filter).pipe(
+      return this.http.get<any[]>(placesApi + '/places?' + filter).pipe(
         map((apiResponse: any[]) => {
           return apiResponse.map((apiLocation: any) => {
             return new Place(
@@ -39,7 +39,7 @@ export class MapService {
         })
       );
     }
-    return this.http.get<any[]>(appApi + '/places').pipe(
+    return this.http.get<any[]>(placesApi + '/places').pipe(
       map((apiResponse: any[]) => {
         return apiResponse.map((apiLocation: any) => {
           return new Place(
@@ -64,7 +64,7 @@ export class MapService {
   }
 
   getCities(): Observable<string[]> {
-    return this.http.get<string[]>(appApi + '/places/cities');
+    return this.http.get<string[]>(placesApi + '/places/cities');
   }
 
   uploadLocation(location: UploadLocationModel): Observable<void> {
@@ -84,9 +84,8 @@ export class MapService {
     }
 
     const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
-
-    return this.http.post<void>(appApi + '/places/addLocation', data, {
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<void>(placesApi + '/places/addLocation', data, {
       headers,
     });
   }
@@ -107,7 +106,7 @@ export class MapService {
     headers.append('Content-Type', 'application/json');
 
     return this.http.post<void>(
-      appApi + `/places/${location.id}/editLocation`,
+      placesApi + `/places/${location.id}/editLocation`,
       data,
       {
         headers,
@@ -117,11 +116,11 @@ export class MapService {
 
   public deleteLocation(userId: number, placeId: number): Observable<void> {
     return this.http.delete<void>(
-      appApi + `/places/delete?userId=${userId}&placeId=${placeId}`
+      placesApi + `/places/delete?userId=${userId}&placeId=${placeId}`
     );
   }
 
   public getLocationById(id: number): Observable<Place> {
-    return this.http.get<Place>(appApi + '/places/id/' + id);
+    return this.http.get<Place>(placesApi + '/places/id/' + id);
   }
 }

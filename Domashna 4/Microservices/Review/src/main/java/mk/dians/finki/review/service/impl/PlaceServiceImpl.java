@@ -1,13 +1,12 @@
-package mk.dians.finki.places.service.impl;
+package mk.dians.finki.review.service.impl;
 
-
-import mk.dians.finki.places.model.Place;
-import mk.dians.finki.places.repository.PlaceRepository;
-import mk.dians.finki.places.service.PlaceService;
-import mk.dians.finki.places.service.helper.PlaceSpecifications;
-import mk.dians.finki.places.model.exceptions.PlaceNotExistent;
+import mk.dians.finki.review.model.Place;
+import mk.dians.finki.review.repository.PlaceRepository;
+import mk.dians.finki.review.service.PlaceService;
+import mk.dians.finki.review.service.helper.PlaceSpecifications;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import mk.dians.finki.review.model.exceptions.PlaceNotExistent;
 
 import java.io.IOException;
 import java.util.List;
