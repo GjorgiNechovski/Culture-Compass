@@ -1,0 +1,17 @@
+<div *ngIf="mapLoaded" class="my-google-map">
+  <google-map class="map-container" [width]="'100%'" [height]="'100vh'" [options]="mapOptions">
+    <map-marker *ngFor="let location of locations"
+                [clickable]="true"
+                [position]="location.position"
+                [options]="mapOptions"
+                (mapClick)="openLocationDetails(location)">
+    </map-marker>
+    <ng-container *ngIf="(directionsResults$ | async) as directionsResults">
+      <map-directions-renderer *ngIf="directionsResults" [directions]="directionsResults"></map-directions-renderer>
+    </ng-container>
+
+  </google-map>
+
+  <app-filter-component></app-filter-component>
+
+</div>

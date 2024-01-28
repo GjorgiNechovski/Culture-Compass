@@ -1,0 +1,23 @@
+<div class="boxShadow margin-5">
+  <div class="container" style="margin-top: 5rem;">
+    <div class="arrow" (click)="goToMap()"></div>
+
+      <div class="py-3 px-3">
+        <span  *ngIf="places.length > 0; else noLocationsFound" class="row justify-content-evenly">
+          <div class="container card text-left col-lg-3 col-md-5 col-11 my-3 mx-3" *ngFor="let place of places" (click)="openLocationDetails(place)">
+              <img src="{{place.imageUrl ? place.imageUrl : 'assets/placeholder.png'}}" alt="Example Image" class="img-fluid">
+              <h5 style="margin-top: 1rem; font-weight: 500;">{{place.name}}</h5>
+              <p style="font-size: 14px;">Rating: <span style="color: #CC913E; font-weight: 500;">{{place.calculateAverageRating() ?? '0.00'}}</span></p>
+          </div>
+        </span>
+
+        <ng-template #noLocationsFound>
+          <p class="mt-5 text-center">We couldn't find any locations that match your search.</p>
+        </ng-template>
+      </div>
+  </div>
+
+</div>
+
+<app-filter-component></app-filter-component>
+

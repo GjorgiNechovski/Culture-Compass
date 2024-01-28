@@ -1,0 +1,30 @@
+.desktopbuttons {
+  align-items: baseline;
+}
+.wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+  background-color: rgba(29,29,29,1);
+  border-radius: 0 0 20px 20px;
+}
+.primary-button {
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+  background-color: #CC913E;
+  border-radius: 30px;
+  border: none;
+  padding: 5px 15px;
+}
+.secondary-button {
+  font-weight: 500;
+  font-size: 16px;
+  color: #CC913E;
+  background-color: transparent;
+  border-radius: 30px;
+  border: 1px solid #CC913E;
+  padding: 5px 10px;
+}
