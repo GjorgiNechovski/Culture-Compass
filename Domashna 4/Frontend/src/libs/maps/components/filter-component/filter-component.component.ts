@@ -34,8 +34,10 @@ export class FilterComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm.valueChanges
-      .pipe(debounceTime(400), distinctUntilChanged())
+      .pipe(debounceTime(400))
       .subscribe((formValue) => {
+        console.log(formValue);
+
         const queryString =
           this.filterQueryFactoryService.generateQueryString(formValue);
         this.placesFacade.fetchPlaces(queryString);

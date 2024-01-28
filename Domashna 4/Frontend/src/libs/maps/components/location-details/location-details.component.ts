@@ -64,10 +64,11 @@ export class LocationDetailsComponent {
 
         const newReview = new UploadNewReview(comment, rating, id);
 
-        this.reviewService.addReview(newReview).subscribe();
-        window.location.reload();
+        this.reviewService.addReview(newReview).subscribe(() => {
+          window.location.reload();
 
-        this.addingReview = false;
+          this.addingReview = false;
+        });
       }
     } else {
       this.error = 'Ве молам пополнете ги сите полиња!';
