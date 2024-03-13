@@ -21,7 +21,7 @@ Features included in the project:
 -  Fullstack Application
 -  Design Patterns
 -  Azure APIs and database (Spring and Postgres)
--  Leetify frontend (Angular app)
+-  Netlify frontend (Angular app)
 -  Google Maps API
 -  Pipe and filter (creation of the initial database)
 -  Figma prototypes
