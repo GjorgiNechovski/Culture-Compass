@@ -1,19 +1,31 @@
-﻿Предмет: Дизајн и архитектура на софтвер
+Subject: Software Design and Architecture
 
-Име на веб апликацијата: Culture Compass
+Web Application Name: Culture Compass
 
-Автори:
+Authors:
 
-- Стефан Петровски 206023
-- Ѓорги Нечовски 211177
-- Бојана Марковска 211134
-- Ивана Коцева 211045
-- Ана Јанеска 211008 (Го напушти проектот, не е повеќе дел од него)
+- Stefan Petrovski 206023
+- Gjorgi Nechovski 211177
+- Bojana Markovska 211134
+- Ivana Koceva 211045
+- Ana Janeska 211008 (She left the project, she is no longer a part of it)
   
-Ментори:
+Mentors:
 
-проф. д-р Љупчо Антовски
-проф. д-р Петре Ламески
+prof. Dr. Ljupco Antovski
+prof. Dr. Petre Lameski
 
-Линк до апликацијата: https://culture-compass.netlify.app/map (потребно е околу 1 минута после стартување на апликацијата додека апликацијата не ги добие сите потребни податоци од различните микросервиси).
-После оценувањето делови од апликацијата повеќе не работаат (на пример како системот за навигација од една локација до друга) поради исклучување на Google API за Angular компонентата задолжена за мапа.
+Link to the application: https://culture-compass.netlify.app/map (it takes about 1 minute after starting the application until the application receives all the necessary data from the various microservices, if that doesn't work please refresh).
+
+Features included in the project:
+-  Fullstack Application
+-  Design Patterns
+-  Azure APIs and database (Spring and Postgres)
+-  Leetify frontend (Angular app)
+-  Google Maps API
+-  Pipe and filter (creation of the initial database)
+-  Figma prototypes
+-  Conceptual, Execution and Implementation architecture
+-  Docker
+
+After the evaluation, parts of the application no longer work (such as the navigation system from one site to another) due to the shutdown of the Google API for the Angular component responsible for the map.
